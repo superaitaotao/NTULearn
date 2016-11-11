@@ -11,18 +11,18 @@ import Foundation
 public class CourseInfo: NSObject{
     var name: String
     var folders: [String]
-    var foldersChecked: [Bool]
-    var isChecked: Bool
+    var foldersChecked: [BoolWrapper]
+    var isChecked: BoolWrapper
     
     convenience init(name: String, folders: [String]) {
-        var foldersChecked: [Bool] = []
+        var foldersChecked: [BoolWrapper] = []
         for _ in 0 ..< folders.count  {
-            foldersChecked.append(false)
+            foldersChecked.append(BoolWrapper(false))
         }
-        self.init(name:name, folders: folders, isChecked: false, foldersChecked: foldersChecked)
+        self.init(name:name, folders: folders, isChecked: BoolWrapper(false), foldersChecked: foldersChecked)
     }
     
-    init(name: String, folders: [String], isChecked: Bool, foldersChecked: [Bool]) {
+    init(name: String, folders: [String], isChecked: BoolWrapper, foldersChecked: [BoolWrapper]) {
         self.name = name
         self.folders = folders
         self.foldersChecked = foldersChecked
@@ -31,9 +31,9 @@ public class CourseInfo: NSObject{
     
     override public var description: String {
         var s: String = ""
-        s += "\(self.name)  : \(isChecked) \n"
+        s += "\(self.name)  : \(isChecked.value) \n"
         for i in 0 ..< folders.count {
-            s += "\(folders[i]) : \(foldersChecked[i]) \n"
+            s += "\(folders[i]) : \(foldersChecked[i].value) \n"
         }
         s += "\n"
         return s

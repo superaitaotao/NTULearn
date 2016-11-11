@@ -1,4 +1,3 @@
-//
 //  SettingViewController.swift
 //  NewNTULearn
 //
@@ -29,11 +28,11 @@ class SettingViewController: NSViewController, NSTableViewDataSource, NSTableVie
         for course in courses {
             oneCourseInfo = [:]
             oneCourseInfo["courseName"] = course.name
-            oneCourseInfo["isChecked"] = course.isChecked
+            oneCourseInfo["isChecked"] = course.isChecked.value
             
             oneCourseFolders = []
             for i in 0 ..< course.folders.count {
-                oneCourseFolders.append([course.folders[i],course.foldersChecked[i]])
+                oneCourseFolders.append([course.folders[i],course.foldersChecked[i].value])
             }
             oneCourseInfo["folders"] = oneCourseFolders
             allCourseInfo.append(oneCourseInfo)
@@ -51,7 +50,7 @@ class SettingViewController: NSViewController, NSTableViewDataSource, NSTableVie
         
         let courseArray = UserDefaults.standard.array(forKey: "courseFoldersSetting") as! [[String: Any]]
         var oneCourseInfo: CourseInfo
-        var foldersChecked: [Bool]
+        var foldersChecked: [BoolWrapper]
         var folders: [String]
         
         for course in courseArray {
@@ -59,12 +58,31 @@ class SettingViewController: NSViewController, NSTableViewDataSource, NSTableVie
             folders = []
             for folder in course["folders"] as! [[Any]]{
                 folders.append(folder[0] as! String)
-                foldersChecked.append(folder[1] as! Bool)
+                foldersChecked.append(BoolWrapper(folder[1] as! Bool))
             }
-            oneCourseInfo = CourseInfo(name: course["courseName"] as! String, folders: folders, isChecked: course["isChecked"] as! Bool, foldersChecked: foldersChecked)
+            oneCourseInfo = CourseInfo(name: course["courseName"] as! String, folders: folders, isChecked: BoolWrapper(course["isChecked"] as! Bool), foldersChecked: foldersChecked)
             courseFolders.append(oneCourseInfo)
         }
+    }
+    
+    func saveCourseFolders() {
+        var allCourseInfo: [[String: Any]] = []
+        var oneCourseInfo: [String: Any]
+        var oneCourseFolders: [[Any]]
+        for course in courseFolders {
+            oneCourseInfo = [:]
+            oneCourseInfo["courseName"] = course.name
+            oneCourseInfo["isChecked"] = course.isChecked.value
+            
+            oneCourseFolders = []
+            for i in 0 ..< course.folders.count {
+                oneCourseFolders.append([course.folders[i],course.foldersChecked[i].value])
+            }
+            oneCourseInfo["folders"] = oneCourseFolders
+            allCourseInfo.append(oneCourseInfo)
+        }
         
+        UserDefaults.standard.register(defaults:["courseFoldersSetting" : allCourseInfo])
     }
     
     override func viewDidLoad() {
@@ -86,11 +104,11 @@ class SettingViewController: NSViewController, NSTableViewDataSource, NSTableVie
         
         var stackView: NSStackView
         
-        stackView = SettingStackRow().getTableRow(checked: &(courseInfo.isChecked), text: courseInfo.name, fontsize: 20, leftPadding: 20, rowHeight: bigRowheight)
+        stackView = SettingStackRow(checked: courseInfo.isChecked, text: courseInfo.name, fontsize: 20, leftPadding: 20, rowHeight: bigRowheight)
         view.addArrangedSubview(stackView)
         
         for i in 0 ..< courseInfo.folders.count{
-            stackView = SettingStackRow().getTableRow(checked: &(courseInfo.foldersChecked[i]), text: courseInfo.folders[i], fontsize: 15, leftPadding: 40, rowHeight: smallRowHeight)
+            stackView = SettingStackRow(checked: courseInfo.foldersChecked[i], text: courseInfo.folders[i], fontsize: 15, leftPadding: 40, rowHeight: smallRowHeight)
             view.addArrangedSubview(stackView)
         }
     
@@ -103,6 +121,7 @@ class SettingViewController: NSViewController, NSTableViewDataSource, NSTableVie
     }
     
     @IBAction func onDoneClicked(sender: NSButton) {
-        print("done")
+        saveCourseFolders()
+        view.window?.close()
     }
 }

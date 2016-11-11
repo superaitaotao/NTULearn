@@ -8,27 +8,20 @@
 
 import Cocoa
 
-class SettingStackRow{
+class SettingStackRow: NSStackView{
 
     let checkBox: NSButton = NSButton(checkboxWithTitle: "", target: nil, action: nil)
-//    let checkBox: NSButton = NSButton(frame: CGRect(x: 10, y: 10, width: 10, height: 10))
     let textView: NSTextField = NSTextField()
-    var checked: Bool = false
+    var checked: BoolWrapper = BoolWrapper(false)
     
-    func getTableRow(checked: inout Bool, text: String, fontsize: Int, leftPadding: Int, rowHeight: Int) -> NSStackView{
+    init(checked: BoolWrapper, text: String, fontsize: Int, leftPadding: Int, rowHeight: Int) {
+        super.init(frame: CGRect(x: 0, y: 0, width: 10, height: rowHeight))
+        
         self.checked = checked
-        
-        checkBox.state = {() -> Int
-            in if checked {
-                return 1
-            } else {
-                return 0
-            }
-        }()
-        
         checkBox.title = ""
         checkBox.target = self
         checkBox.action = #selector(onCheckboxChanged(sender:))
+        checkBox.state = checked.value ? 1 : 0
         
         textView.isEditable = false
         textView.font = NSFont.systemFont(ofSize: CGFloat(fontsize))
@@ -38,25 +31,26 @@ class SettingStackRow{
         textView.backgroundColor = NSColor(calibratedRed: 0, green: 0, blue: 0, alpha: 0)
         textView.isBordered = false
         textView.drawsBackground = true
+    
+        setViews([checkBox, textView], in: NSStackViewGravity.leading)
         
-        let stackView = NSStackView(views: [checkBox, textView])
-        checkBox.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: CGFloat(leftPadding)).isActive = true
+        checkBox.leftAnchor.constraint(equalTo: self.leftAnchor, constant: CGFloat(leftPadding)).isActive = true
         textView.leftAnchor.constraint(equalTo: checkBox.rightAnchor, constant: 10).isActive = true
-        stackView.heightAnchor.constraint(equalToConstant: CGFloat(rowHeight)).isActive = true
-        
-        return stackView
+        self.heightAnchor.constraint(equalToConstant: CGFloat(rowHeight)).isActive = true
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
     }
     
     @IBAction func onCheckboxChanged(sender: NSButton) {
-        self.checked = { () -> Bool in
-            if sender.state == 1 {
-                return true
-            } else {
-                return false
-            }
-        }()
+        self.checked.value = sender.state == 1 ? true : false
     }
-    
-    
 }
 
+class BoolWrapper : NSObject{
+    var value : Bool
+    init(_ bool: Bool) {
+        value = bool
+    }
+}

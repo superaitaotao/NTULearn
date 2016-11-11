@@ -41,6 +41,7 @@ class PopoverViewController: NSViewController {
         settingMenu.addItem(NSMenuItem(title: "Quit", action: nil, keyEquivalent: ""))
         
         firstMenuItem.action = #selector(showPreferencePage(sender:))
+//        view.window?.collectionBehavior = NSWindowCollectionBehavior.fullScreenAuxiliary
     }
     
     override var nibName: String? {
@@ -55,6 +56,7 @@ class PopoverViewController: NSViewController {
         print("showing preference page")
         if preferenceWindow == nil {
             preferenceWindow = NSWindow(contentViewController: settingViewController)
+            preferenceWindow?.title = "Setting"
         }
         popover?.close()
         preferenceWindow?.makeKeyAndOrderFront(nil)
