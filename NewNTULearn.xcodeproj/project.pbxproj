@@ -7,12 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		523C5D591DD3664900A2E3C5 /* richCourseFolders.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 523C5D581DD3664900A2E3C5 /* richCourseFolders.rtf */; };
+		5255880E1DD2FE1E00B47A6E /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5255880C1DD2FE1E00B47A6E /* SettingViewController.swift */; };
+		5255880F1DD2FE1E00B47A6E /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5255880D1DD2FE1E00B47A6E /* SettingViewController.xib */; };
+		525588111DD31E4300B47A6E /* SettingStackRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525588101DD31E4300B47A6E /* SettingStackRow.swift */; };
+		525588131DD32F9700B47A6E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 525588121DD32F9700B47A6E /* Main.storyboard */; };
+		525588151DD347A800B47A6E /* courseFolders.txt in Resources */ = {isa = PBXBuildFile; fileRef = 525588141DD347A800B47A6E /* courseFolders.txt */; };
+		525588171DD3499600B47A6E /* CourseInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525588161DD3499600B47A6E /* CourseInfo.swift */; };
+		526645D51DD3520100F5FFE3 /* SettingViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526645D41DD3520100F5FFE3 /* SettingViewControllerTest.swift */; };
 		52A841AA1DD1E9CA0050CE22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A841A91DD1E9CA0050CE22 /* AppDelegate.swift */; };
 		52A841AC1DD1E9CA0050CE22 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A841AB1DD1E9CA0050CE22 /* ViewController.swift */; };
 		52A841AE1DD1E9CA0050CE22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52A841AD1DD1E9CA0050CE22 /* Assets.xcassets */; };
-		52A841B11DD1E9CA0050CE22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52A841AF1DD1E9CA0050CE22 /* Main.storyboard */; };
 		52A841BC1DD1E9CB0050CE22 /* NewNTULearnTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A841BB1DD1E9CB0050CE22 /* NewNTULearnTests.swift */; };
 		52A841C71DD1E9CB0050CE22 /* NewNTULearnUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A841C61DD1E9CB0050CE22 /* NewNTULearnUITests.swift */; };
+		52A841D61DD1EA100050CE22 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A841D41DD1EA100050CE22 /* PopoverViewController.swift */; };
+		52A841D71DD1EA100050CE22 /* PopoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52A841D51DD1EA100050CE22 /* PopoverViewController.xib */; };
+		52A841D91DD1EED80050CE22 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A841D81DD1EED80050CE22 /* EventMonitor.swift */; };
+		52A841DD1DD1FC9C0050CE22 /* FileInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A841DC1DD1FC9C0050CE22 /* FileInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,11 +44,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		523C5D581DD3664900A2E3C5 /* richCourseFolders.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = richCourseFolders.rtf; sourceTree = "<group>"; };
+		5255880C1DD2FE1E00B47A6E /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		5255880D1DD2FE1E00B47A6E /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
+		525588101DD31E4300B47A6E /* SettingStackRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingStackRow.swift; sourceTree = "<group>"; };
+		525588121DD32F9700B47A6E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		525588141DD347A800B47A6E /* courseFolders.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = courseFolders.txt; sourceTree = "<group>"; };
+		525588161DD3499600B47A6E /* CourseInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseInfo.swift; sourceTree = "<group>"; };
+		526645D41DD3520100F5FFE3 /* SettingViewControllerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewControllerTest.swift; sourceTree = "<group>"; };
 		52A841A61DD1E9CA0050CE22 /* NewNTULearn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewNTULearn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52A841A91DD1E9CA0050CE22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52A841AB1DD1E9CA0050CE22 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		52A841AD1DD1E9CA0050CE22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		52A841B01DD1E9CA0050CE22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		52A841B21DD1E9CA0050CE22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52A841B71DD1E9CB0050CE22 /* NewNTULearnTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewNTULearnTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		52A841BB1DD1E9CB0050CE22 /* NewNTULearnTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNTULearnTests.swift; sourceTree = "<group>"; };
@@ -45,6 +63,10 @@
 		52A841C21DD1E9CB0050CE22 /* NewNTULearnUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewNTULearnUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		52A841C61DD1E9CB0050CE22 /* NewNTULearnUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNTULearnUITests.swift; sourceTree = "<group>"; };
 		52A841C81DD1E9CB0050CE22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		52A841D41DD1EA100050CE22 /* PopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
+		52A841D51DD1EA100050CE22 /* PopoverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopoverViewController.xib; sourceTree = "<group>"; };
+		52A841D81DD1EED80050CE22 /* EventMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
+		52A841DC1DD1FC9C0050CE22 /* FileInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,11 +117,21 @@
 		52A841A81DD1E9CA0050CE22 /* NewNTULearn */ = {
 			isa = PBXGroup;
 			children = (
+				52A841D41DD1EA100050CE22 /* PopoverViewController.swift */,
+				52A841D51DD1EA100050CE22 /* PopoverViewController.xib */,
 				52A841A91DD1E9CA0050CE22 /* AppDelegate.swift */,
 				52A841AB1DD1E9CA0050CE22 /* ViewController.swift */,
+				525588121DD32F9700B47A6E /* Main.storyboard */,
 				52A841AD1DD1E9CA0050CE22 /* Assets.xcassets */,
-				52A841AF1DD1E9CA0050CE22 /* Main.storyboard */,
 				52A841B21DD1E9CA0050CE22 /* Info.plist */,
+				52A841D81DD1EED80050CE22 /* EventMonitor.swift */,
+				52A841DC1DD1FC9C0050CE22 /* FileInfo.swift */,
+				5255880C1DD2FE1E00B47A6E /* SettingViewController.swift */,
+				5255880D1DD2FE1E00B47A6E /* SettingViewController.xib */,
+				525588101DD31E4300B47A6E /* SettingStackRow.swift */,
+				525588161DD3499600B47A6E /* CourseInfo.swift */,
+				525588141DD347A800B47A6E /* courseFolders.txt */,
+				523C5D581DD3664900A2E3C5 /* richCourseFolders.rtf */,
 			);
 			path = NewNTULearn;
 			sourceTree = "<group>";
@@ -109,6 +141,7 @@
 			children = (
 				52A841BB1DD1E9CB0050CE22 /* NewNTULearnTests.swift */,
 				52A841BD1DD1E9CB0050CE22 /* Info.plist */,
+				526645D41DD3520100F5FFE3 /* SettingViewControllerTest.swift */,
 			);
 			path = NewNTULearnTests;
 			sourceTree = "<group>";
@@ -229,8 +262,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				525588151DD347A800B47A6E /* courseFolders.txt in Resources */,
 				52A841AE1DD1E9CA0050CE22 /* Assets.xcassets in Resources */,
-				52A841B11DD1E9CA0050CE22 /* Main.storyboard in Resources */,
+				52A841D71DD1EA100050CE22 /* PopoverViewController.xib in Resources */,
+				523C5D591DD3664900A2E3C5 /* richCourseFolders.rtf in Resources */,
+				5255880F1DD2FE1E00B47A6E /* SettingViewController.xib in Resources */,
+				525588131DD32F9700B47A6E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,8 +292,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				525588171DD3499600B47A6E /* CourseInfo.swift in Sources */,
 				52A841AC1DD1E9CA0050CE22 /* ViewController.swift in Sources */,
+				52A841D61DD1EA100050CE22 /* PopoverViewController.swift in Sources */,
+				525588111DD31E4300B47A6E /* SettingStackRow.swift in Sources */,
 				52A841AA1DD1E9CA0050CE22 /* AppDelegate.swift in Sources */,
+				52A841D91DD1EED80050CE22 /* EventMonitor.swift in Sources */,
+				52A841DD1DD1FC9C0050CE22 /* FileInfo.swift in Sources */,
+				5255880E1DD2FE1E00B47A6E /* SettingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,6 +308,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				52A841BC1DD1E9CB0050CE22 /* NewNTULearnTests.swift in Sources */,
+				526645D51DD3520100F5FFE3 /* SettingViewControllerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,17 +334,6 @@
 			targetProxy = 52A841C31DD1E9CB0050CE22 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		52A841AF1DD1E9CA0050CE22 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				52A841B01DD1E9CA0050CE22 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		52A841C91DD1E9CB0050CE22 /* Debug */ = {
@@ -496,6 +529,7 @@
 				52A841CD1DD1E9CB0050CE22 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		52A841CE1DD1E9CB0050CE22 /* Build configuration list for PBXNativeTarget "NewNTULearnTests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +538,7 @@
 				52A841D01DD1E9CB0050CE22 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		52A841D11DD1E9CB0050CE22 /* Build configuration list for PBXNativeTarget "NewNTULearnUITests" */ = {
 			isa = XCConfigurationList;
@@ -512,6 +547,7 @@
 				52A841D31DD1E9CB0050CE22 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

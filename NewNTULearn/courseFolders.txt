@@ -1,0 +1,13 @@
+{
+	"courses" : [{
+        "name":""RE6001"
+        "folders" :"["content1", "assignment1"]
+    },{
+    "name":""RE6001"
+    "folders" :"["content1", "assignment1"]
+    },{
+    "name":""RE6001"
+    "folders" :"["content1", "assignment1"]
+    }]
+}
+    
