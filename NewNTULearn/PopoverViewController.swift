@@ -39,7 +39,7 @@ class PopoverViewController: NSViewController {
         settingMenu.addItem(firstMenuItem)
         settingMenu.addItem(NSMenuItem(title: "About", action: nil, keyEquivalent: ""))
         settingMenu.addItem(NSMenuItem(title: "Quit", action: nil, keyEquivalent: ""))
-        
+
         firstMenuItem.action = #selector(showPreferencePage(sender:))
 //        view.window?.collectionBehavior = NSWindowCollectionBehavior.fullScreenAuxiliary
     }

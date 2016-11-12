@@ -7,23 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		523C5D591DD3664900A2E3C5 /* richCourseFolders.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 523C5D581DD3664900A2E3C5 /* richCourseFolders.rtf */; };
-		5255880E1DD2FE1E00B47A6E /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5255880C1DD2FE1E00B47A6E /* SettingViewController.swift */; };
-		5255880F1DD2FE1E00B47A6E /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5255880D1DD2FE1E00B47A6E /* SettingViewController.xib */; };
-		525588111DD31E4300B47A6E /* SettingStackRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525588101DD31E4300B47A6E /* SettingStackRow.swift */; };
-		525588131DD32F9700B47A6E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 525588121DD32F9700B47A6E /* Main.storyboard */; };
-		525588151DD347A800B47A6E /* courseFolders.txt in Resources */ = {isa = PBXBuildFile; fileRef = 525588141DD347A800B47A6E /* courseFolders.txt */; };
-		525588171DD3499600B47A6E /* CourseInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525588161DD3499600B47A6E /* CourseInfo.swift */; };
+		524152E91DD6E668003ACACE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524152DA1DD6E668003ACACE /* AppDelegate.swift */; };
+		524152EB1DD6E668003ACACE /* CourseInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524152DC1DD6E668003ACACE /* CourseInfo.swift */; };
+		524152EC1DD6E668003ACACE /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524152DD1DD6E668003ACACE /* EventMonitor.swift */; };
+		524152ED1DD6E668003ACACE /* FileInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524152DE1DD6E668003ACACE /* FileInfo.swift */; };
+		524152EE1DD6E668003ACACE /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 524152DF1DD6E668003ACACE /* Info.plist */; };
+		524152EF1DD6E668003ACACE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 524152E01DD6E668003ACACE /* Main.storyboard */; };
+		524152F01DD6E668003ACACE /* NTULearnFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524152E11DD6E668003ACACE /* NTULearnFetcher.swift */; };
+		524152F11DD6E668003ACACE /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524152E21DD6E668003ACACE /* PopoverViewController.swift */; };
+		524152F21DD6E668003ACACE /* PopoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 524152E31DD6E668003ACACE /* PopoverViewController.xib */; };
+		524152F41DD6E668003ACACE /* SettingStackRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524152E51DD6E668003ACACE /* SettingStackRow.swift */; };
+		524152F51DD6E668003ACACE /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524152E61DD6E668003ACACE /* SettingViewController.swift */; };
+		524152F61DD6E668003ACACE /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 524152E71DD6E668003ACACE /* SettingViewController.xib */; };
+		524152F71DD6E668003ACACE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524152E81DD6E668003ACACE /* ViewController.swift */; };
+		524152FE1DD6ED8E003ACACE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 524152F81DD6ED8E003ACACE /* Assets.xcassets */; };
 		526645D51DD3520100F5FFE3 /* SettingViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526645D41DD3520100F5FFE3 /* SettingViewControllerTest.swift */; };
-		52A841AA1DD1E9CA0050CE22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A841A91DD1E9CA0050CE22 /* AppDelegate.swift */; };
-		52A841AC1DD1E9CA0050CE22 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A841AB1DD1E9CA0050CE22 /* ViewController.swift */; };
-		52A841AE1DD1E9CA0050CE22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52A841AD1DD1E9CA0050CE22 /* Assets.xcassets */; };
 		52A841BC1DD1E9CB0050CE22 /* NewNTULearnTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A841BB1DD1E9CB0050CE22 /* NewNTULearnTests.swift */; };
 		52A841C71DD1E9CB0050CE22 /* NewNTULearnUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A841C61DD1E9CB0050CE22 /* NewNTULearnUITests.swift */; };
-		52A841D61DD1EA100050CE22 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A841D41DD1EA100050CE22 /* PopoverViewController.swift */; };
-		52A841D71DD1EA100050CE22 /* PopoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52A841D51DD1EA100050CE22 /* PopoverViewController.xib */; };
-		52A841D91DD1EED80050CE22 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A841D81DD1EED80050CE22 /* EventMonitor.swift */; };
-		52A841DD1DD1FC9C0050CE22 /* FileInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A841DC1DD1FC9C0050CE22 /* FileInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,29 +44,29 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		523C5D581DD3664900A2E3C5 /* richCourseFolders.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = richCourseFolders.rtf; sourceTree = "<group>"; };
-		5255880C1DD2FE1E00B47A6E /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
-		5255880D1DD2FE1E00B47A6E /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
-		525588101DD31E4300B47A6E /* SettingStackRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingStackRow.swift; sourceTree = "<group>"; };
-		525588121DD32F9700B47A6E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		525588141DD347A800B47A6E /* courseFolders.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = courseFolders.txt; sourceTree = "<group>"; };
-		525588161DD3499600B47A6E /* CourseInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseInfo.swift; sourceTree = "<group>"; };
+		524152D91DD6E667003ACACE /* NewNTULearn-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NewNTULearn-Bridging-Header.h"; sourceTree = "<group>"; };
+		524152DA1DD6E668003ACACE /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		524152DC1DD6E668003ACACE /* CourseInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseInfo.swift; sourceTree = "<group>"; };
+		524152DD1DD6E668003ACACE /* EventMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
+		524152DE1DD6E668003ACACE /* FileInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileInfo.swift; sourceTree = "<group>"; };
+		524152DF1DD6E668003ACACE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		524152E01DD6E668003ACACE /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		524152E11DD6E668003ACACE /* NTULearnFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTULearnFetcher.swift; sourceTree = "<group>"; };
+		524152E21DD6E668003ACACE /* PopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
+		524152E31DD6E668003ACACE /* PopoverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopoverViewController.xib; sourceTree = "<group>"; };
+		524152E51DD6E668003ACACE /* SettingStackRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingStackRow.swift; sourceTree = "<group>"; };
+		524152E61DD6E668003ACACE /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		524152E71DD6E668003ACACE /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
+		524152E81DD6E668003ACACE /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		524152F81DD6ED8E003ACACE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		526645D41DD3520100F5FFE3 /* SettingViewControllerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewControllerTest.swift; sourceTree = "<group>"; };
 		52A841A61DD1E9CA0050CE22 /* NewNTULearn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewNTULearn.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		52A841A91DD1E9CA0050CE22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		52A841AB1DD1E9CA0050CE22 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		52A841AD1DD1E9CA0050CE22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		52A841B21DD1E9CA0050CE22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52A841B71DD1E9CB0050CE22 /* NewNTULearnTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewNTULearnTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		52A841BB1DD1E9CB0050CE22 /* NewNTULearnTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNTULearnTests.swift; sourceTree = "<group>"; };
 		52A841BD1DD1E9CB0050CE22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52A841C21DD1E9CB0050CE22 /* NewNTULearnUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewNTULearnUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		52A841C61DD1E9CB0050CE22 /* NewNTULearnUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNTULearnUITests.swift; sourceTree = "<group>"; };
 		52A841C81DD1E9CB0050CE22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		52A841D41DD1EA100050CE22 /* PopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
-		52A841D51DD1EA100050CE22 /* PopoverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopoverViewController.xib; sourceTree = "<group>"; };
-		52A841D81DD1EED80050CE22 /* EventMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
-		52A841DC1DD1FC9C0050CE22 /* FileInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +94,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		524153051DD6EEBF003ACACE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				524152DC1DD6E668003ACACE /* CourseInfo.swift */,
+				524152DD1DD6E668003ACACE /* EventMonitor.swift */,
+				524152DE1DD6E668003ACACE /* FileInfo.swift */,
+				524152E11DD6E668003ACACE /* NTULearnFetcher.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		524153061DD6EF07003ACACE /* System */ = {
+			isa = PBXGroup;
+			children = (
+				524152F81DD6ED8E003ACACE /* Assets.xcassets */,
+				524152DF1DD6E668003ACACE /* Info.plist */,
+				524152D91DD6E667003ACACE /* NewNTULearn-Bridging-Header.h */,
+			);
+			name = System;
+			sourceTree = "<group>";
+		};
 		52A8419D1DD1E9CA0050CE22 = {
 			isa = PBXGroup;
 			children = (
@@ -117,21 +138,16 @@
 		52A841A81DD1E9CA0050CE22 /* NewNTULearn */ = {
 			isa = PBXGroup;
 			children = (
-				52A841D41DD1EA100050CE22 /* PopoverViewController.swift */,
-				52A841D51DD1EA100050CE22 /* PopoverViewController.xib */,
-				52A841A91DD1E9CA0050CE22 /* AppDelegate.swift */,
-				52A841AB1DD1E9CA0050CE22 /* ViewController.swift */,
-				525588121DD32F9700B47A6E /* Main.storyboard */,
-				52A841AD1DD1E9CA0050CE22 /* Assets.xcassets */,
-				52A841B21DD1E9CA0050CE22 /* Info.plist */,
-				52A841D81DD1EED80050CE22 /* EventMonitor.swift */,
-				52A841DC1DD1FC9C0050CE22 /* FileInfo.swift */,
-				5255880C1DD2FE1E00B47A6E /* SettingViewController.swift */,
-				5255880D1DD2FE1E00B47A6E /* SettingViewController.xib */,
-				525588101DD31E4300B47A6E /* SettingStackRow.swift */,
-				525588161DD3499600B47A6E /* CourseInfo.swift */,
-				525588141DD347A800B47A6E /* courseFolders.txt */,
-				523C5D581DD3664900A2E3C5 /* richCourseFolders.rtf */,
+				524153051DD6EEBF003ACACE /* Model */,
+				524153061DD6EF07003ACACE /* System */,
+				524152DA1DD6E668003ACACE /* AppDelegate.swift */,
+				524152E01DD6E668003ACACE /* Main.storyboard */,
+				524152E21DD6E668003ACACE /* PopoverViewController.swift */,
+				524152E31DD6E668003ACACE /* PopoverViewController.xib */,
+				524152E51DD6E668003ACACE /* SettingStackRow.swift */,
+				524152E61DD6E668003ACACE /* SettingViewController.swift */,
+				524152E71DD6E668003ACACE /* SettingViewController.xib */,
+				524152E81DD6E668003ACACE /* ViewController.swift */,
 			);
 			path = NewNTULearn;
 			sourceTree = "<group>";
@@ -223,6 +239,7 @@
 				TargetAttributes = {
 					52A841A51DD1E9CA0050CE22 = {
 						CreatedOnToolsVersion = 8.1;
+						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 					};
 					52A841B61DD1E9CB0050CE22 = {
@@ -262,12 +279,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				525588151DD347A800B47A6E /* courseFolders.txt in Resources */,
-				52A841AE1DD1E9CA0050CE22 /* Assets.xcassets in Resources */,
-				52A841D71DD1EA100050CE22 /* PopoverViewController.xib in Resources */,
-				523C5D591DD3664900A2E3C5 /* richCourseFolders.rtf in Resources */,
-				5255880F1DD2FE1E00B47A6E /* SettingViewController.xib in Resources */,
-				525588131DD32F9700B47A6E /* Main.storyboard in Resources */,
+				524152F21DD6E668003ACACE /* PopoverViewController.xib in Resources */,
+				524152F61DD6E668003ACACE /* SettingViewController.xib in Resources */,
+				524152EF1DD6E668003ACACE /* Main.storyboard in Resources */,
+				524152EE1DD6E668003ACACE /* Info.plist in Resources */,
+				524152FE1DD6ED8E003ACACE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,14 +308,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				525588171DD3499600B47A6E /* CourseInfo.swift in Sources */,
-				52A841AC1DD1E9CA0050CE22 /* ViewController.swift in Sources */,
-				52A841D61DD1EA100050CE22 /* PopoverViewController.swift in Sources */,
-				525588111DD31E4300B47A6E /* SettingStackRow.swift in Sources */,
-				52A841AA1DD1E9CA0050CE22 /* AppDelegate.swift in Sources */,
-				52A841D91DD1EED80050CE22 /* EventMonitor.swift in Sources */,
-				52A841DD1DD1FC9C0050CE22 /* FileInfo.swift in Sources */,
-				5255880E1DD2FE1E00B47A6E /* SettingViewController.swift in Sources */,
+				524152EC1DD6E668003ACACE /* EventMonitor.swift in Sources */,
+				524152F01DD6E668003ACACE /* NTULearnFetcher.swift in Sources */,
+				524152ED1DD6E668003ACACE /* FileInfo.swift in Sources */,
+				524152F71DD6E668003ACACE /* ViewController.swift in Sources */,
+				524152F51DD6E668003ACACE /* SettingViewController.swift in Sources */,
+				524152EB1DD6E668003ACACE /* CourseInfo.swift in Sources */,
+				524152F11DD6E668003ACACE /* PopoverViewController.swift in Sources */,
+				524152E91DD6E668003ACACE /* AppDelegate.swift in Sources */,
+				524152F41DD6E668003ACACE /* SettingStackRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,11 +447,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = NewNTULearn/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = superaitaotao.NewNTULearn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "NewNTULearn/NewNTULearn-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -443,11 +463,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = NewNTULearn/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = superaitaotao.NewNTULearn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "NewNTULearn/NewNTULearn-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
