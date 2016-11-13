@@ -101,7 +101,7 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
-                                            <stackView identifier="myStack" distribution="equalCentering" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" id="yAA-b7-Kxd">
+                                            <stackView identifier="myStack" distribution="equalCentering" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" id="yAA-b7-Kxd">
                                                 <rect key="frame" x="1" y="1" width="475" height="77"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </stackView>

@@ -8,6 +8,7 @@
 
 import Cocoa
 import AppKit
+import Kanna
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -38,6 +39,23 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 }
             })
         }
+        
+        var operation = BlockOperation(block: { () -> Void in
+            self.fetcher.getCourseList(handler: { result in
+                switch result {
+                case FetchResult.logInError:
+                    print("log in failed")
+                case FetchResult.courseListRetrievalError:
+                    print("course list retrieval error")
+                case FetchResult.success(let data):
+                    print("course list get")
+                default:
+                    break
+                }
+            })
+        })
+        
+        fetcher.logInQueue.addOperation(operation)
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -51,18 +69,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func showPopover(button: AnyObject) {
         popover.show(relativeTo: button.bounds, of: button as! NSButton, preferredEdge: NSRectEdge.minY)
         eventMonitor?.start()
-        fetcher.logIn{ (result: FetchResult)->Void in
-            switch result {
-            case .success(let data):
-                let dataString = String(data: data, encoding: String.Encoding.utf8)
-//                let kanna = Kanna.HTML(html: dataString, encoding: String.Encoding.utf8)
-                
-            case .error(let error) :
-                print("log in failed")
-            }
-        }
     }
     
+
     func closePopover(button: AnyObject) {
         popover.performClose(button)
         eventMonitor?.stop()
@@ -77,6 +86,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             button.state = 0
         }
     }
+
+   
     
 }
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		50260603E3861277C7F9F6FD /* Pods_NewNTULearn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F76D326CB4476C14FC99BD89 /* Pods_NewNTULearn.framework */; };
 		524152E91DD6E668003ACACE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524152DA1DD6E668003ACACE /* AppDelegate.swift */; };
 		524152EB1DD6E668003ACACE /* CourseInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524152DC1DD6E668003ACACE /* CourseInfo.swift */; };
 		524152EC1DD6E668003ACACE /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524152DD1DD6E668003ACACE /* EventMonitor.swift */; };
@@ -21,6 +22,7 @@
 		524152F61DD6E668003ACACE /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 524152E71DD6E668003ACACE /* SettingViewController.xib */; };
 		524152F71DD6E668003ACACE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524152E81DD6E668003ACACE /* ViewController.swift */; };
 		524152FE1DD6ED8E003ACACE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 524152F81DD6ED8E003ACACE /* Assets.xcassets */; };
+		5241530E1DD7660D003ACACE /* MyUserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5241530D1DD7660D003ACACE /* MyUserDefault.swift */; };
 		526645D51DD3520100F5FFE3 /* SettingViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526645D41DD3520100F5FFE3 /* SettingViewControllerTest.swift */; };
 		52A841BC1DD1E9CB0050CE22 /* NewNTULearnTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A841BB1DD1E9CB0050CE22 /* NewNTULearnTests.swift */; };
 		52A841C71DD1E9CB0050CE22 /* NewNTULearnUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A841C61DD1E9CB0050CE22 /* NewNTULearnUITests.swift */; };
@@ -59,6 +61,7 @@
 		524152E71DD6E668003ACACE /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
 		524152E81DD6E668003ACACE /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		524152F81DD6ED8E003ACACE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5241530D1DD7660D003ACACE /* MyUserDefault.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyUserDefault.swift; sourceTree = "<group>"; };
 		526645D41DD3520100F5FFE3 /* SettingViewControllerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewControllerTest.swift; sourceTree = "<group>"; };
 		52A841A61DD1E9CA0050CE22 /* NewNTULearn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewNTULearn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52A841B71DD1E9CB0050CE22 /* NewNTULearnTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewNTULearnTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,6 +70,9 @@
 		52A841C21DD1E9CB0050CE22 /* NewNTULearnUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewNTULearnUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		52A841C61DD1E9CB0050CE22 /* NewNTULearnUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNTULearnUITests.swift; sourceTree = "<group>"; };
 		52A841C81DD1E9CB0050CE22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B247C0D81A48447DE688A3AB /* Pods-NewNTULearn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewNTULearn.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NewNTULearn/Pods-NewNTULearn.debug.xcconfig"; sourceTree = "<group>"; };
+		C26C0E3CC32B02968F1CACDB /* Pods-NewNTULearn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewNTULearn.release.xcconfig"; path = "Pods/Target Support Files/Pods-NewNTULearn/Pods-NewNTULearn.release.xcconfig"; sourceTree = "<group>"; };
+		F76D326CB4476C14FC99BD89 /* Pods_NewNTULearn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NewNTULearn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50260603E3861277C7F9F6FD /* Pods_NewNTULearn.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,6 +101,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		093D1D89ADC6BD829CAA3B73 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B247C0D81A48447DE688A3AB /* Pods-NewNTULearn.debug.xcconfig */,
+				C26C0E3CC32B02968F1CACDB /* Pods-NewNTULearn.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		524153051DD6EEBF003ACACE /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +117,7 @@
 				524152DD1DD6E668003ACACE /* EventMonitor.swift */,
 				524152DE1DD6E668003ACACE /* FileInfo.swift */,
 				524152E11DD6E668003ACACE /* NTULearnFetcher.swift */,
+				5241530D1DD7660D003ACACE /* MyUserDefault.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -122,6 +139,8 @@
 				52A841BA1DD1E9CB0050CE22 /* NewNTULearnTests */,
 				52A841C51DD1E9CB0050CE22 /* NewNTULearnUITests */,
 				52A841A71DD1E9CA0050CE22 /* Products */,
+				093D1D89ADC6BD829CAA3B73 /* Pods */,
+				89580F2CAE94DD8534AD2832 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -171,6 +190,14 @@
 			path = NewNTULearnUITests;
 			sourceTree = "<group>";
 		};
+		89580F2CAE94DD8534AD2832 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F76D326CB4476C14FC99BD89 /* Pods_NewNTULearn.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -178,9 +205,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 52A841CB1DD1E9CB0050CE22 /* Build configuration list for PBXNativeTarget "NewNTULearn" */;
 			buildPhases = (
+				634C3F4CEED1C3ADD9D4C802 /* [CP] Check Pods Manifest.lock */,
 				52A841A21DD1E9CA0050CE22 /* Sources */,
 				52A841A31DD1E9CA0050CE22 /* Frameworks */,
 				52A841A41DD1E9CA0050CE22 /* Resources */,
+				99C6A5EB3EDE5186DDCAE85E /* [CP] Embed Pods Frameworks */,
+				7E50A6902228A24D2148BE13 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -303,6 +333,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		634C3F4CEED1C3ADD9D4C802 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7E50A6902228A24D2148BE13 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NewNTULearn/Pods-NewNTULearn-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		99C6A5EB3EDE5186DDCAE85E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NewNTULearn/Pods-NewNTULearn-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		52A841A21DD1E9CA0050CE22 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -313,6 +391,7 @@
 				524152ED1DD6E668003ACACE /* FileInfo.swift in Sources */,
 				524152F71DD6E668003ACACE /* ViewController.swift in Sources */,
 				524152F51DD6E668003ACACE /* SettingViewController.swift in Sources */,
+				5241530E1DD7660D003ACACE /* MyUserDefault.swift in Sources */,
 				524152EB1DD6E668003ACACE /* CourseInfo.swift in Sources */,
 				524152F11DD6E668003ACACE /* PopoverViewController.swift in Sources */,
 				524152E91DD6E668003ACACE /* AppDelegate.swift in Sources */,
@@ -393,6 +472,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				"HEADER_SEARCH_PATHS[arch=*]" = "$(SDKROOT)/usr/include/libxml2";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -436,6 +516,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				"HEADER_SEARCH_PATHS[arch=*]" = "$(SDKROOT)/usr/include/libxml2";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
@@ -445,6 +526,7 @@
 		};
 		52A841CC1DD1E9CB0050CE22 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B247C0D81A48447DE688A3AB /* Pods-NewNTULearn.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -461,6 +543,7 @@
 		};
 		52A841CD1DD1E9CB0050CE22 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C26C0E3CC32B02968F1CACDB /* Pods-NewNTULearn.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
