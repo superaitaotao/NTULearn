@@ -49,6 +49,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     print("course list retrieval error")
                 case FetchResult.success(let data):
                     print("course list get")
+//                    self.fetcher.downloadRec(url:"/webapps/blackboard/content/listContent.jsp?course_id=_121297_1&content_id=_914554_1", path: "",courseName: "")
+                    self.fetcher.downloadRec(url:"/webapps/blackboard/content/listContent.jsp?course_id=_121297_1&content_id=_872153_1", path: "",courseName: "")
                 default:
                     break
                 }

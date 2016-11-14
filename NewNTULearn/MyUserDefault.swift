@@ -17,15 +17,18 @@ class MyUserDefault {
         var allCourseInfo: [[String: Any]] = []
         var oneCourseInfo: [String: Any]
         var oneCourseFolders: [[Any]]
+        
         for course in courseFolders {
             oneCourseInfo = [:]
             oneCourseInfo["courseName"] = course.name
             oneCourseInfo["isChecked"] = course.isChecked.value
             
             oneCourseFolders = []
+            
             for i in 0 ..< course.folders.count {
-                oneCourseFolders.append([course.folders[i],course.foldersChecked[i].value])
+                oneCourseFolders.append([course.folders[i],course.foldersChecked[i].value, course.foldersUrl[i]])
             }
+            
             oneCourseInfo["folders"] = oneCourseFolders
             allCourseInfo.append(oneCourseInfo)
         }
@@ -40,15 +43,18 @@ class MyUserDefault {
         var oneCourseInfo: CourseInfo
         var foldersChecked: [BoolWrapper]
         var folders: [String]
+        var foldersUrl: [String]
         
         for course in courseArray {
             foldersChecked = []
             folders = []
+            foldersUrl = []
             for folder in course["folders"] as! [[Any]]{
                 folders.append(folder[0] as! String)
                 foldersChecked.append(BoolWrapper(folder[1] as! Bool))
+                foldersUrl.append(folder[2] as! String)
             }
-            oneCourseInfo = CourseInfo(name: course["courseName"] as! String, folders: folders, isChecked: BoolWrapper(course["isChecked"] as! Bool), foldersChecked: foldersChecked)
+            oneCourseInfo = CourseInfo(name: course["courseName"] as! String, folders: folders, isChecked: BoolWrapper(course["isChecked"] as! Bool), foldersChecked: foldersChecked, foldersUrl: foldersUrl)
             courseFolders.append(oneCourseInfo)
         }
         

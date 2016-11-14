@@ -27,6 +27,7 @@ enum FetchResult {
 
 class NTULearnFetcher{
     let baseUrl = "https://ntulearn.ntu.edu.sg"
+    let baseFileUrl = "/Users/shutaoxu/"
     let userName = "sxu007"
     let password = "Galaxy1234#"
     let session: URLSession = URLSession.shared
@@ -136,6 +137,7 @@ class NTULearnFetcher{
                     print("\(getFolderListRequest.url) failed to load")
                 } else {
                     var folders: [String] = []
+                    var foldersUrl: [String] = []
                     if let data = data {
                         let html = self.getHtmlDoc(data: data)
                         if let ul = html.at_css("ul[id='courseMenuPalette_contents']"),
@@ -143,15 +145,18 @@ class NTULearnFetcher{
                             let lis = ulDoc.css("li")
                             for li in lis {
                                 if let li = li.at_css("a"),
-                                    let content = li.content {
-                                    if !self.excludedCourses.contains(content) {
-                                        folders.append(content)
-                                    }
+                                    let content = li.content,
+                                    let link = li["href"]{
+                                        if !self.excludedCourses.contains(content) {
+                                            folders.append(content)
+                                            foldersUrl.append(link)
+                                        }
                                 }
                             }
+                            
                             let lock = NSRecursiveLock()
                             lock.lock()
-                            self.courseFolders.append(CourseInfo(name: course[1], folders: folders))
+                            self.courseFolders.append(CourseInfo(name: course[1], folders: folders, foldersUrl: foldersUrl))
                             if self.courseFolders.count == self.numberOfCourses {
                                 MyUserDefault.sharedInstance.saveCourseFolders(courseFolders: self.courseFolders)
                             }
@@ -178,6 +183,52 @@ class NTULearnFetcher{
     
     func getHtmlDoc(data: Data) -> HTMLDocument{
         return HTML(html: String(data: data, encoding: String.Encoding.utf8)!, encoding: .utf8)!
+    }
+    
+    private func downloadFile(url: String, path: String, courseName: String) {
+        downloadFileQueue.addOperation({() -> Void in
+            self.session.downloadTask(with: URL(string: url)!, completionHandler: { (url, response, error) -> Void in
+                if let url = url {
+                    
+                }
+            }).resume()
+        })
+    }
+        
+    func downloadRec(url: String, path: String, courseName: String) {
+        let urlRequest = URLRequest(url: URL(string: baseUrl + url)!)
+        logInQueue.addOperation {
+            self.session.dataTask(with: urlRequest, completionHandler: {(data, response, error) -> Void in
+                if let data = data {
+                    let html = self.getHtmlDoc(data: data)
+                    //attachments first
+                    let attachmentLists = html.css("ul[class*='attachments']")
+                    for attachmentList in attachmentLists {
+                        let attachmentLinks = attachmentList.css("a")
+                        for link in attachmentLinks {
+                            if let linkk = link["href"] {
+                                self.downloadFile(url: self.baseUrl + linkk, path: "", courseName: "")
+                            }
+                        }
+                        
+                    }
+                    
+                    let lis = html.css("li[id*='contentListItem']")
+                    for li in lis {
+                        let links = li.css("a")
+                        for link in links {
+                           //contains onclick attribute
+                            if link["onclick"] != nil {
+                                self.downloadFile(url: self.baseUrl + link["href"]!, path: "", courseName: "")
+                            } else {
+                                self.downloadRec(url: self.baseUrl + link["href"]!, path: path + link.content! + "/", courseName: courseName)
+                            }
+                        }
+                    }
+                }
+            }).resume()
+        }
+        
     }
         
 }
