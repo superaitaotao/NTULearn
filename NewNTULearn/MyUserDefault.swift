@@ -13,6 +13,9 @@ class MyUserDefault {
     private let userDefaults = UserDefaults.standard
     private init() {}
     
+    let courseFoldersKey = "courseFoldersSetting"
+    let latestDownloadedKey = "latestDownloadedFiles"
+    
     func saveCourseFolders(courseFolders : [CourseInfo]) {
         var allCourseInfo: [[String: Any]] = []
         var oneCourseInfo: [String: Any]
@@ -20,7 +23,7 @@ class MyUserDefault {
         
         for course in courseFolders {
             oneCourseInfo = [:]
-            oneCourseInfo["courseName"] = course.name
+            oneCourseInfo["courseName"] = proccessCourseName(name: course.name)
             oneCourseInfo["isChecked"] = course.isChecked.value
             
             oneCourseFolders = []
@@ -33,13 +36,13 @@ class MyUserDefault {
             allCourseInfo.append(oneCourseInfo)
         }
         
-        userDefaults.register(defaults:["courseFoldersSetting" : allCourseInfo])
+        userDefaults.register(defaults:[courseFoldersKey : allCourseInfo])
     }
     
     func getCourseFolders() -> [CourseInfo]{
         var courseFolders: [CourseInfo] = []
         
-        let courseArray = userDefaults.array(forKey: "courseFoldersSetting") as! [[String: Any]]
+        let courseArray = userDefaults.array(forKey: courseFoldersKey) as! [[String: Any]]
         var oneCourseInfo: CourseInfo
         var foldersChecked: [BoolWrapper]
         var folders: [String]
@@ -60,5 +63,21 @@ class MyUserDefault {
         
         return courseFolders
     }
+   
+    //supposed to modify the course name to be shorter...
+    func proccessCourseName(name: String) -> String {
+        return name
+    }
     
+    func isSavedCourseFoldersPresent() -> Bool{
+        return userDefaults.array(forKey: courseFoldersKey) != nil
+    }
+    
+    func getLatestDownloadedFiles() -> [[AnyObject]]? {
+        return userDefaults.array(forKey: latestDownloadedKey) as! [[AnyObject]]?
+    }
+    
+    func saveLatestDownloadedFiles(files: [[Any]]) {
+        userDefaults.register(defaults: [latestDownloadedKey: files])
+    }
 }

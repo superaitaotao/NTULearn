@@ -27,7 +27,7 @@ enum FetchResult {
 
 class NTULearnFetcher{
     let baseUrl = "https://ntulearn.ntu.edu.sg"
-    let baseFileUrl = "/Users/shutaoxu/"
+    let baseFileUrl = "/Users/shutaoxu/NTULearn"
     let userName = "sxu007"
     let password = "Galaxy1234#"
     let session: URLSession = URLSession.shared
@@ -47,8 +47,13 @@ class NTULearnFetcher{
     }()
     
     var courseFolders: [CourseInfo] = []
+    var latestDownloadedFiles : [[AnyObject]]?
+    
     let excludedCourses = NSSet(array: ["Home Page", "Announcements", "Tools", "Help", "Library Resources", "Information", "Groups"])
     var numberOfCourses: Int = 0
+    let fileManager = FileManager.default
+    
+    var courseListCompleteHandler: (() -> Void)?
     
     func logIn(handler: @escaping (FetchResult) -> Void){
         print("logging in ...")
@@ -84,8 +89,8 @@ class NTULearnFetcher{
                     if (data == nil) {
                         handler(FetchResult.courseListRetrievalError(error!))
                     } else {
+                        self.courseListCompleteHandler = {() -> Void in handler(FetchResult.success(data!))}
                         self.parseCourseList(data: data!)
-                        handler(FetchResult.success(data!))
                     }
                 }).resume()
             default:
@@ -108,8 +113,10 @@ class NTULearnFetcher{
     private func parseCourseList(data: Data) {
         let doc = getHtmlDoc(data: data)
         var courses : [[String]] = []
-        for li in doc.css("li") {
-            courses.append([(li.css("a").first?["href"])!.trimmingCharacters(in: CharacterSet(charactersIn: " ")), (li.css("a").first?.content)!])
+        if let lis = doc?.css("li") {
+            for li in lis{
+                courses.append([(li.css("a").first?["href"])!.trimmingCharacters(in: CharacterSet(charactersIn: " ")), (li.css("a").first?.content)!])
+            }
         }
         parseCourseFolders(courses: courses)
     }
@@ -139,8 +146,8 @@ class NTULearnFetcher{
                     var folders: [String] = []
                     var foldersUrl: [String] = []
                     if let data = data {
-                        let html = self.getHtmlDoc(data: data)
-                        if let ul = html.at_css("ul[id='courseMenuPalette_contents']"),
+                        if let html = self.getHtmlDoc(data: data),
+                            let ul = html.at_css("ul[id='courseMenuPalette_contents']"),
                             let ulDoc = HTML(html: ul.toHTML!, encoding: .utf8) {
                             let lis = ulDoc.css("li")
                             for li in lis {
@@ -159,6 +166,7 @@ class NTULearnFetcher{
                             self.courseFolders.append(CourseInfo(name: course[1], folders: folders, foldersUrl: foldersUrl))
                             if self.courseFolders.count == self.numberOfCourses {
                                 MyUserDefault.sharedInstance.saveCourseFolders(courseFolders: self.courseFolders)
+                                self.courseListCompleteHandler?()
                             }
                             lock.unlock()
                         }
@@ -181,33 +189,94 @@ class NTULearnFetcher{
         }
     }
     
-    func getHtmlDoc(data: Data) -> HTMLDocument{
-        return HTML(html: String(data: data, encoding: String.Encoding.utf8)!, encoding: .utf8)!
+    func getHtmlDoc(data: Data) -> HTMLDocument?{
+        if let string = String(data: data, encoding: String.Encoding.utf8) {
+            return HTML(html: string, encoding: .utf8)
+        }
+        return nil
+    }
+    
+    func download() {
+        let courses: [CourseInfo] = MyUserDefault.sharedInstance.getCourseFolders()
+        latestDownloadedFiles = MyUserDefault.sharedInstance.getLatestDownloadedFiles()
+        
+        var path: String
+        var folderName: String
+        var folderUrl: String
+        for course in courses {
+            if course.isChecked.value {
+                print ("downloading \(course.name)")
+                for i in 0 ..< course.folders.count {
+                    if course.foldersChecked[i].value {
+                        folderName = course.folders[i]
+                        path = baseFileUrl + "/" + course.name + "/" + folderName
+                        folderUrl = course.foldersUrl[i]
+                        downloadRec(url: self.getUrl(url: folderUrl), path: path ,courseName: course.name)
+                    }
+                }
+            }
+        }
     }
     
     private func downloadFile(url: String, path: String, courseName: String) {
         downloadFileQueue.addOperation({() -> Void in
             self.session.downloadTask(with: URL(string: url)!, completionHandler: { (url, response, error) -> Void in
+                if error != nil {
+                    print (error.debugDescription)
+                    return
+                }
                 if let url = url {
+                    if !self.fileManager.fileExists(atPath: path) {
+                        try! self.fileManager.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+                    }
                     
+                    let desUrl = URL(fileURLWithPath: path + "/" + response!.suggestedFilename!, isDirectory: false)
+                    
+                    if !self.fileManager.fileExists(atPath: desUrl.path) && !(response?.suggestedFilename?.contains(".html"))! {
+                        print("downloaded \(desUrl.path)")
+                        do {
+                            try self.fileManager.moveItem(at: url, to: desUrl)
+                            self.appendToLatestDownloadedFiles(file: [response?.suggestedFilename as AnyObject, desUrl.path as AnyObject, Date() as AnyObject, courseName as AnyObject])
+                        } catch is Error{
+                            print ("error: \(desUrl.path)")
+                        }
+                    }
                 }
             }).resume()
         })
     }
+    
+    private func appendToLatestDownloadedFiles(file: [AnyObject]) {
+        let lock = NSRecursiveLock()
+        lock.lock()
         
-    func downloadRec(url: String, path: String, courseName: String) {
-        let urlRequest = URLRequest(url: URL(string: baseUrl + url)!)
+        if latestDownloadedFiles == nil {
+            latestDownloadedFiles = []
+        }
+        
+        latestDownloadedFiles?.append(file)
+        if (latestDownloadedFiles?.count)! > 10 {
+            latestDownloadedFiles?.remove(at: 0)
+        }
+        
+        MyUserDefault.sharedInstance.saveLatestDownloadedFiles(files: latestDownloadedFiles!)
+        
+        lock.unlock()
+    }
+        
+    private func downloadRec(url: String, path: String, courseName: String) {
+        let urlRequest = URLRequest(url: URL(string:url)!)
         logInQueue.addOperation {
             self.session.dataTask(with: urlRequest, completionHandler: {(data, response, error) -> Void in
-                if let data = data {
-                    let html = self.getHtmlDoc(data: data)
+                if let data = data,
+                    let html = self.getHtmlDoc(data: data){
                     //attachments first
                     let attachmentLists = html.css("ul[class*='attachments']")
                     for attachmentList in attachmentLists {
                         let attachmentLinks = attachmentList.css("a")
                         for link in attachmentLinks {
                             if let linkk = link["href"] {
-                                self.downloadFile(url: self.baseUrl + linkk, path: "", courseName: "")
+                                self.downloadFile(url: self.getUrl(url: linkk), path: path, courseName: "")
                             }
                         }
                         
@@ -219,16 +288,27 @@ class NTULearnFetcher{
                         for link in links {
                            //contains onclick attribute
                             if link["onclick"] != nil {
-                                self.downloadFile(url: self.baseUrl + link["href"]!, path: "", courseName: "")
+                                self.downloadFile(url:  self.getUrl(url: link["href"]!), path: path, courseName: courseName)
                             } else {
-                                self.downloadRec(url: self.baseUrl + link["href"]!, path: path + link.content! + "/", courseName: courseName)
+                                self.downloadRec(url:  self.getUrl(url: link["href"]!), path: path + "/" + link.content!, courseName: courseName)
                             }
                         }
                     }
                 }
             }).resume()
         }
+    }
+    
+    private func getUrl(url : String) -> String {
+        if url.characters.count == 0 {
+            return ""
+        }
         
+        if url.characters.first! == "/" {
+            return baseUrl + url
+        } else {
+            return url
+        }
     }
         
 }

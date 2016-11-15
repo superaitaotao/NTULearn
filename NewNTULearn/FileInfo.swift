@@ -12,9 +12,12 @@ class FileInfo: NSObject{
     let fileName : String
     let courseName: String
     let syncDate: Date
-    init(fileName: String, courseName: String, syncDate: Date) {
+    let fileUrl: URL?
+    
+    init(fileName: String, courseName: String, syncDate: Date, fileUrl: URL?) {
         self.fileName = fileName
         self.courseName = courseName
         self.syncDate = syncDate
+        self.fileUrl = fileUrl
     }
 }
