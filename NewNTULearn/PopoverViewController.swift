@@ -8,12 +8,14 @@
 
 import Cocoa
 
-class PopoverViewController: NSViewController {
+class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
     
-    private dynamic var recentFiles : [FileInfo] = []
+    var recentFiles : [FileInfo] = MyUserDefault.sharedInstance.getLatestDownloadedFiles()
     
+    @IBOutlet var tableView: NSTableView!
     @IBOutlet var settingButton: NSButton!
     @IBOutlet var goToFolderButton: NSButton!
+    @IBOutlet var infoTextField: NSTextField!
     
     let settingMenu: NSMenu = NSMenu()
     var popover: NSPopover = NSPopover()
@@ -38,10 +40,6 @@ class PopoverViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
-        for _ in 0..<10 {
-            recentFiles.append(FileInfo(fileName: "Week 7 LMRP Excel Example.xlsx", courseName: "RE6007", syncDate: Date(), fileUrl: nil))
-        }
         
         if eventMonitor == nil {
             eventMonitor = EventMonitor(mask: [.leftMouseDown, .rightMouseDown], handler: { (event) -> Void in
@@ -53,6 +51,10 @@ class PopoverViewController: NSViewController {
         
         settingButton.action = #selector(showSettingMenu(sender:))
         goToFolderButton.action = #selector(openNTULearnFolder(sender:))
+        
+//        for i in 0 ..< 3 {
+//            PopoverViewController.recentFiles.append(FileInfo(fileName: "aaa", courseName: "bbb", syncDate: Date(), fileUrl: URL(fileURLWithPath: "")))
+//        }
     }
     
     override var nibName: String? {
@@ -87,6 +89,35 @@ class PopoverViewController: NSViewController {
         }
     }
     
+    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        let cell  = tableView.make(withIdentifier: "cell", owner: self) as! NSTableCellView
+        var textFields = cell.subviews as! [NSTextField]
+        let fileInfo = recentFiles[row]
+        
+        textFields[0].stringValue = fileInfo.courseName
+        textFields[1].stringValue = fileInfo.fileName
+        textFields[2].objectValue = fileInfo.syncDate
+        
+        return cell
+    }
+    
+    func numberOfRows(in tableView: NSTableView) -> Int {
+        return recentFiles.count
+    }
+    
+    func tableViewSelectionDidChange(_ notification: Notification) {
+        if tableView.selectedRow != -1 {
+            let url = recentFiles[tableView.selectedRow].fileUrl
+            if let url = url {
+                if FileManager.default.fileExists(atPath: url.absoluteString) {
+                    NSWorkspace.shared().open(url)
+                }
+            }
+        }
+    }
+    
+    
+    
     @IBAction func openNTULearnFolder(sender: NSButton) {
         let path = URL(fileURLWithPath: "/Users/shutaoxu/NTULearn")
         if !(FileManager.default.fileExists(atPath: path.absoluteString)) {
@@ -96,7 +127,8 @@ class PopoverViewController: NSViewController {
                 print("error: create directory at \(path.absoluteString)")
             }
         }
-        NSWorkspace.shared().open(path)
+        NSWorkspace.shared().open(path.baseURL)
         closePopover(button: sender)
     }
+    
 }

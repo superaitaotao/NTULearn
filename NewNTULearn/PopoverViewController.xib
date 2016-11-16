@@ -10,7 +10,9 @@
         <customObject id="-2" userLabel="File's Owner" customClass="PopoverViewController" customModule="NewNTULearn" customModuleProvider="target">
             <connections>
                 <outlet property="goToFolderButton" destination="ZZa-Bd-YRp" id="8th-pB-QO6"/>
+                <outlet property="infoTextField" destination="KJO-A4-leh" id="lIV-Qq-CY3"/>
                 <outlet property="settingButton" destination="8oc-la-jBl" id="LbI-OG-4wx"/>
+                <outlet property="tableView" destination="o8L-Fp-6vb" id="RU8-A1-pIC"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -67,7 +69,7 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KJO-A4-leh">
-                                <rect key="frame" x="3" y="10" width="91" height="17"/>
+                                <rect key="frame" x="6" y="10" width="284" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Up to date" drawsBackground="YES" id="74X-hW-sjR">
                                     <font key="font" metaFont="system"/>
@@ -115,7 +117,7 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
-                                            <tableCellView id="6Ak-SI-U56">
+                                            <tableCellView identifier="cell" id="6Ak-SI-U56">
                                                 <rect key="frame" x="1" y="1" width="345" height="67"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
@@ -144,7 +146,7 @@
                                                         </connections>
                                                     </textField>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NtU-wa-2SS">
-                                                        <rect key="frame" x="200" y="1" width="142" height="17"/>
+                                                        <rect key="frame" x="203" y="1" width="142" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="right" title="Table View Cell" drawsBackground="YES" id="sTk-Xr-teB">
                                                             <dateFormatter key="formatter" dateStyle="short" id="122-SS-Qfa"/>
@@ -165,8 +167,8 @@
                                     </tableColumn>
                                 </tableColumns>
                                 <connections>
-                                    <binding destination="ObH-wX-8II" name="content" keyPath="arrangedObjects" id="OKj-OA-taf"/>
-                                    <binding destination="ObH-wX-8II" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="OKj-OA-taf" id="sUf-Sx-E7k"/>
+                                    <outlet property="dataSource" destination="-2" id="zgn-rN-KwN"/>
+                                    <outlet property="delegate" destination="-2" id="z5g-PV-cTL"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -191,11 +193,6 @@
                 </button>
             </subviews>
         </customView>
-        <arrayController id="ObH-wX-8II">
-            <connections>
-                <binding destination="-2" name="contentArray" keyPath="recentFiles" id="XdC-gq-Cmk"/>
-            </connections>
-        </arrayController>
         <userDefaultsController representsSharedInstance="YES" id="Smz-Uj-K1E"/>
     </objects>
     <resources>

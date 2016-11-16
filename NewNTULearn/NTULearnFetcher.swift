@@ -46,14 +46,27 @@ class NTULearnFetcher{
         return queue
     }()
     
+    let helperQueue: OperationQueue = {
+        let queue = OperationQueue()
+        queue.name = "helper queue"
+        queue.maxConcurrentOperationCount = 1
+        return queue
+    }()
+    
     var courseFolders: [CourseInfo] = []
-    var latestDownloadedFiles : [[AnyObject]]?
+    var noOfDownloadedFiles: Int = 0
     
     let excludedCourses = NSSet(array: ["Home Page", "Announcements", "Tools", "Help", "Library Resources", "Information", "Groups"])
     var numberOfCourses: Int = 0
     let fileManager = FileManager.default
     
     var courseListCompleteHandler: (() -> Void)?
+    
+    var popover: PopoverViewController
+    
+    init(popover: PopoverViewController) {
+        self.popover = popover
+    }
     
     func logIn(handler: @escaping (FetchResult) -> Void){
         print("logging in ...")
@@ -197,8 +210,11 @@ class NTULearnFetcher{
     }
     
     func download() {
+        
+        downloadFileQueue.cancelAllOperations()
+        noOfDownloadedFiles = 0
+        
         let courses: [CourseInfo] = MyUserDefault.sharedInstance.getCourseFolders()
-        latestDownloadedFiles = MyUserDefault.sharedInstance.getLatestDownloadedFiles()
         
         var path: String
         var folderName: String
@@ -236,7 +252,7 @@ class NTULearnFetcher{
                         print("downloaded \(desUrl.path)")
                         do {
                             try self.fileManager.moveItem(at: url, to: desUrl)
-                            self.appendToLatestDownloadedFiles(file: [response?.suggestedFilename as AnyObject, desUrl.path as AnyObject, Date() as AnyObject, courseName as AnyObject])
+                            self.addRecentFile(file: FileInfo(fileName: (response?.suggestedFilename)!, courseName: courseName, syncDate: Date(), fileUrl: desUrl))
                         } catch is Error{
                             print ("error: \(desUrl.path)")
                         }
@@ -244,26 +260,24 @@ class NTULearnFetcher{
                 }
             }).resume()
         })
+        
+ 
     }
     
-    private func appendToLatestDownloadedFiles(file: [AnyObject]) {
+    private func addRecentFile(file: FileInfo) {
         let lock = NSRecursiveLock()
         lock.lock()
-        
-        if latestDownloadedFiles == nil {
-            latestDownloadedFiles = []
+        popover.recentFiles.insert(file, at: 0)
+        if  popover.recentFiles.count == 16 {
+            popover.recentFiles.remove(at: 15)
         }
-        
-        latestDownloadedFiles?.append(file)
-        if (latestDownloadedFiles?.count)! > 10 {
-            latestDownloadedFiles?.remove(at: 0)
-        }
-        
-        MyUserDefault.sharedInstance.saveLatestDownloadedFiles(files: latestDownloadedFiles!)
-        
+        noOfDownloadedFiles += 1
+        OperationQueue.main.addOperation({() -> Void in
+            self.popover.tableView.reloadData()
+        })
         lock.unlock()
     }
-        
+    
     private func downloadRec(url: String, path: String, courseName: String) {
         let urlRequest = URLRequest(url: URL(string:url)!)
         logInQueue.addOperation {
@@ -276,7 +290,7 @@ class NTULearnFetcher{
                         let attachmentLinks = attachmentList.css("a")
                         for link in attachmentLinks {
                             if let linkk = link["href"] {
-                                self.downloadFile(url: self.getUrl(url: linkk), path: path, courseName: "")
+                                self.downloadFile(url: self.getUrl(url: linkk), path: path, courseName: courseName)
                             }
                         }
                         

@@ -73,11 +73,36 @@ class MyUserDefault {
         return userDefaults.array(forKey: courseFoldersKey) != nil
     }
     
-    func getLatestDownloadedFiles() -> [[AnyObject]]? {
-        return userDefaults.array(forKey: latestDownloadedKey) as! [[AnyObject]]?
+    func getLatestDownloadedFiles() -> [FileInfo] {
+        let filesDefault = userDefaults.array(forKey: latestDownloadedKey) as! [[AnyObject]]?
+        var files: [FileInfo] = []
+        var oneFile: FileInfo
+        if let filesDefault = filesDefault {
+            for file in filesDefault {
+                oneFile = FileInfo(fileName: file[0] as! String, courseName: file[1] as! String, syncDate: file[2] as! Date , fileUrl: URL(fileURLWithPath:file[3] as! String))
+                files.append(oneFile)
+            }
+        }
+        
+        return files
     }
     
-    func saveLatestDownloadedFiles(files: [[Any]]) {
-        userDefaults.register(defaults: [latestDownloadedKey: files])
+    func saveLatestDownloadedFiles(files: [FileInfo]) {
+        var filesDefault: [[AnyObject]] = []
+        
+        for file in files {
+            filesDefault.append([file.fileName as AnyObject, file.courseName as AnyObject, file.syncDate as AnyObject, file.fileUrl?.absoluteString as AnyObject])
+        }
+        
+        userDefaults.register(defaults: [latestDownloadedKey: filesDefault])
+    }
+    
+    func addLatestDownloadedFile(file: FileInfo) {
+        var files = getLatestDownloadedFiles()
+        files.append(file)
+        if files.count > 10 {
+            files.remove(at: 0)
+        }
+        saveLatestDownloadedFiles(files: files)
     }
 }

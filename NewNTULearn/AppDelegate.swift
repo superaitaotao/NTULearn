@@ -14,7 +14,7 @@ import Kanna
 class AppDelegate: NSObject, NSApplicationDelegate {
     
     let statusIcon = NSStatusBar.system().statusItem(withLength: -2)
-    let fetcher : NTULearnFetcher = NTULearnFetcher()
+    var fetcher : NTULearnFetcher?
     
     let settingViewController = SettingViewController()
     var settingWindow: NSWindow? = nil
@@ -29,8 +29,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             button.action = #selector(statusIconClicked)
         }
         
-        var operation = BlockOperation(block: { () -> Void in
-            self.fetcher.getCourseList(handler: { result in
+        let operation = BlockOperation(block: { () -> Void in
+            self.fetcher?.getCourseList(handler: { result in
                 switch result {
                 case FetchResult.logInError:
                     print("log in failed")
@@ -44,7 +44,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             })
         })
         
-        fetcher.logInQueue.addOperation(operation)
+        fetcher = NTULearnFetcher(popover: popoverViewController)
+        fetcher?.logInQueue.addOperation(operation)
         
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(readyToStartDownload(nc:)), name: NSNotification.Name(rawValue: "CourseFoldersReady"), object: nil)
@@ -53,7 +54,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func readyToStartDownload(nc: Notification) {
-        fetcher.download()
+        fetcher?.download()
+        popoverViewController.infoTextField.stringValue = "Downloading your files, please wait"
     }
     
     @IBAction func statusIconClicked(sender: NSButton) {
