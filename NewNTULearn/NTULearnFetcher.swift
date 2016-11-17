@@ -26,6 +26,8 @@ enum FetchResult {
 }
 
 class NTULearnFetcher{
+    static let DownloadFinishedKey = "DownloadFinishedKey"
+    
     let baseUrl = "https://ntulearn.ntu.edu.sg"
     let baseFileUrl = "/Users/shutaoxu/NTULearn"
     let userName = "sxu007"
@@ -69,6 +71,7 @@ class NTULearnFetcher{
     }
     
     func logIn(handler: @escaping (FetchResult) -> Void){
+        logInQueue.cancelAllOperations()
         print("logging in ...")
         var logInRequest = URLRequest(url: URL(string: baseUrl + "/webapps/login/")!);
         let postString = "user_id=\(userName)&password=\(password)"
@@ -90,6 +93,7 @@ class NTULearnFetcher{
     }
     
     func getCourseList(handler: @escaping (FetchResult) -> Void) {
+        courseFolders = []
         logIn( handler: { (fetchResult) -> Void in
             switch fetchResult{
                 
@@ -210,25 +214,54 @@ class NTULearnFetcher{
     }
     
     func download() {
-        
-        downloadFileQueue.cancelAllOperations()
-        noOfDownloadedFiles = 0
-        
-        let courses: [CourseInfo] = MyUserDefault.sharedInstance.getCourseFolders()
-        
-        var path: String
-        var folderName: String
-        var folderUrl: String
-        for course in courses {
-            if course.isChecked.value {
-                print ("downloading \(course.name)")
-                for i in 0 ..< course.folders.count {
-                    if course.foldersChecked[i].value {
-                        folderName = course.folders[i]
-                        path = baseFileUrl + "/" + course.name + "/" + folderName
-                        folderUrl = course.foldersUrl[i]
-                        downloadRec(url: self.getUrl(url: folderUrl), path: path ,courseName: course.name)
+        let goDownload = {
+            self.downloadFileQueue.cancelAllOperations()
+            self.noOfDownloadedFiles = 0
+            self.setDownloadMonitor()
+            
+            let courses: [CourseInfo] = MyUserDefault.sharedInstance.getCourseFolders()
+            
+            var path: String
+            var folderName: String
+            var folderUrl: String
+            for course in courses {
+                if course.isChecked.value {
+                    print ("downloading \(course.name)")
+                    for i in 0 ..< course.folders.count {
+                        if course.foldersChecked[i].value {
+                            folderName = course.folders[i]
+                            path = self.baseFileUrl + "/" + course.name + "/" + folderName
+                            folderUrl = course.foldersUrl[i]
+                            self.downloadRec(url: self.getUrl(url: folderUrl), path: path ,courseName: course.name)
+                        }
                     }
+                }
+            }
+        }
+        
+        logIn(handler: { (fetchResult) -> Void in
+            switch fetchResult{
+            case .success:
+                goDownload()
+            default:
+                break
+            }
+        })
+    }
+    
+    func setDownloadMonitor() {
+        helperQueue.addOperation {
+            while true {
+                let num1 = self.noOfDownloadedFiles
+                //assume that no file takes less than 20 seconds to download...
+                sleep(20)
+                let num2 = self.noOfDownloadedFiles
+                if num2 != num1 {
+                    continue
+                } else {
+                    print("download finished")
+                    NotificationCenter.default.post(name: Notification.Name(NTULearnFetcher.DownloadFinishedKey), object: nil)
+                    break
                 }
             }
         }

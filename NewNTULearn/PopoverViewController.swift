@@ -16,11 +16,13 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     @IBOutlet var settingButton: NSButton!
     @IBOutlet var goToFolderButton: NSButton!
     @IBOutlet var infoTextField: NSTextField!
+    @IBOutlet var downloadButton: NSButton!
     
     let settingMenu: NSMenu = NSMenu()
     var popover: NSPopover = NSPopover()
     
     var eventMonitor : EventMonitor?
+    var numberOfFileDownloaded = 0
    
     init() {
         popover.animates = false
@@ -51,10 +53,9 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
         
         settingButton.action = #selector(showSettingMenu(sender:))
         goToFolderButton.action = #selector(openNTULearnFolder(sender:))
+        infoTextField.stringValue = "initiating... please wait"
         
-//        for i in 0 ..< 3 {
-//            PopoverViewController.recentFiles.append(FileInfo(fileName: "aaa", courseName: "bbb", syncDate: Date(), fileUrl: URL(fileURLWithPath: "")))
-//        }
+        
     }
     
     override var nibName: String? {
@@ -65,23 +66,23 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
         settingMenu.popUp(positioning: settingMenu.item(at:0) , at: NSPoint(x: 0, y: settingButton.frame.size.height + 7), in: settingButton)
     }
     
-    func showPopover(button: AnyObject) {
+    func showPopover(button: AnyObject?) {
         if popover.contentViewController == nil {
             popover.contentViewController = self
         }
         
-        popover.show(relativeTo: button.bounds, of: button as! NSButton, preferredEdge: NSRectEdge.minY)
+        popover.show(relativeTo: (button?.bounds)!, of: button as! NSButton, preferredEdge: NSRectEdge.minY)
         eventMonitor?.start()
         print("show popover")
     }
     
-    func closePopover(button: AnyObject) {
+    func closePopover(button: AnyObject?) {
         popover.performClose(button)
         eventMonitor?.stop()
         print("close popover")
     }
 
-    func togglePopover(button: AnyObject) {
+    func togglePopover(button: AnyObject?) {
         if (popover.isShown) {
             closePopover(button: button)
         } else {
@@ -105,18 +106,21 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
         return recentFiles.count
     }
     
-    func tableViewSelectionDidChange(_ notification: Notification) {
-        if tableView.selectedRow != -1 {
+    @IBAction func onTableClicked(sender: AnyObject) {
+        let tableView = sender as! NSTableView
+           if tableView.selectedRow != -1 {
             let url = recentFiles[tableView.selectedRow].fileUrl
             if let url = url {
-                if FileManager.default.fileExists(atPath: url.absoluteString) {
-                    NSWorkspace.shared().open(url)
+                if FileManager.default.fileExists(atPath: url.path) {
+                    var containingDir = URL(fileURLWithPath: url.path)
+                    containingDir.deleteLastPathComponent()
+                    NSWorkspace.shared().open(containingDir)
+                } else {
+                    print("file not exists : \(url)")
                 }
             }
         }
     }
-    
-    
     
     @IBAction func openNTULearnFolder(sender: NSButton) {
         let path = URL(fileURLWithPath: "/Users/shutaoxu/NTULearn")
@@ -127,8 +131,9 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
                 print("error: create directory at \(path.absoluteString)")
             }
         }
-        NSWorkspace.shared().open(path.baseURL)
+        NSWorkspace.shared().open(path)
         closePopover(button: sender)
     }
+
     
 }

@@ -12,6 +12,8 @@
         <customObject id="-2" userLabel="File's Owner" customClass="SettingViewController" customModule="NewNTULearn" customModuleProvider="target">
             <connections>
                 <outlet property="doneButton" destination="vaE-go-44O" id="smD-yP-TIm"/>
+                <outlet property="infoTextField" destination="dzv-ck-qSg" id="a2X-qJ-FeK"/>
+                <outlet property="refreshButton" destination="nTa-q5-c9x" id="7ha-6K-Gbv"/>
                 <outlet property="tableView" destination="u0D-TR-CpR" id="Bnj-9o-oFv"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
@@ -69,6 +71,15 @@
                                     <action selector="onDoneClickedWithSender:" target="-1" id="bcs-4F-iC3"/>
                                 </connections>
                             </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dzv-ck-qSg">
+                                <rect key="frame" x="8" y="7" width="389" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="rmk-3N-NLc">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                     </view>
                     <color key="fillColor" red="0.93293940360000005" green="0.93293940360000005" blue="0.93293940360000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
