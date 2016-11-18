@@ -111,6 +111,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         case NSAlertFirstButtonReturn:
             break
         case NSAlertSecondButtonReturn:
+            popoverViewController.infoTextField.stringValue = "Reloading your course list, please wait ..."
             downloadCourseList()
         default:
             break
@@ -119,8 +120,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBAction func startDownload(_: NSButton?) {
         fetcher?.download()
-        popoverViewController.infoTextField.stringValue = "Downloading your files, please wait"
-        downloadCourseList()
+        popoverViewController.infoTextField.stringValue = "Downloading your files, please wait ..."
     }
     
     func downloadCourseList() {
@@ -137,8 +137,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     OperationQueue.main.addOperation {
                         self.showPreferencePage(sender: nil)
                         self.settingViewController.infoTextField.stringValue = ""
-//                        self.settingViewController.courseFolders = []
-//                        self.settingViewController.tableView.reloadData()
                         self.settingViewController.courseFolders = MyUserDefault.sharedInstance.getCourseFolders()
                         self.settingViewController.tableView.reloadData()
                     }

@@ -36,17 +36,28 @@ class SettingViewController: NSViewController, NSTableViewDataSource, NSTableVie
     
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        let view: NSStackView = tableView.make(withIdentifier: "myStack", owner: self) as! NSStackView
+        let view: NSTableCellView = tableView.make(withIdentifier: "nil", owner: self) as! NSTableCellView
         let courseInfo = courseFolders[row]
         
-        var stackView: NSStackView
+        for sub in view.subviews {
+            sub.removeFromSuperview()
+        }
         
-        stackView = SettingStackRow(checked: courseInfo.isChecked, text: courseInfo.name, fontsize: 16, leftPadding: 20, rowHeight: bigRowheight)
-        view.addArrangedSubview(stackView)
+        var preView: NSStackView
+        var nextView: NSStackView
+        let width: Int = Int(view.frame.size.width)
+        
+        preView = SettingStackRow(checked: courseInfo.isChecked, text: courseInfo.name, fontsize: 16, leftPadding: 20, rowHeight: bigRowheight, rowWidth: width).get()
+        view.addSubview(preView)
+        preView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        preView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         
         for i in 0 ..< courseInfo.folders.count{
-            stackView = SettingStackRow(checked: courseInfo.foldersChecked[i], text: courseInfo.folders[i], fontsize: 13, leftPadding: 40, rowHeight: smallRowHeight)
-            view.addArrangedSubview(stackView)
+            nextView = SettingStackRow(checked: courseInfo.foldersChecked[i], text: courseInfo.folders[i], fontsize: 13, leftPadding: 40, rowHeight: smallRowHeight, rowWidth: width).get()
+            view.addSubview(nextView)
+            nextView.topAnchor.constraint(equalTo: preView.bottomAnchor).isActive = true
+            nextView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+            preView = nextView
         }
     
         return view

@@ -5,7 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
-        <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
         <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
@@ -84,14 +83,14 @@
                     </view>
                     <color key="fillColor" red="0.93293940360000005" green="0.93293940360000005" blue="0.93293940360000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </box>
-                <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="79" horizontalPageScroll="10" verticalLineScroll="79" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jWo-J7-Kyr">
+                <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="82" horizontalPageScroll="10" verticalLineScroll="82" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jWo-J7-Kyr">
                     <rect key="frame" x="0.0" y="37" width="480" height="239"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <clipView key="contentView" ambiguous="YES" id="AcS-gO-nsR">
                         <rect key="frame" x="1" y="1" width="478" height="237"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" enabled="NO" rowHeight="77" rowSizeStyle="automatic" viewBased="YES" id="u0D-TR-CpR">
+                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" enabled="NO" rowHeight="80" rowSizeStyle="automatic" viewBased="YES" id="u0D-TR-CpR">
                                 <rect key="frame" x="0.0" y="0.0" width="478" height="237"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
@@ -112,10 +111,10 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
-                                            <stackView identifier="myStack" distribution="equalCentering" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" id="yAA-b7-Kxd">
-                                                <rect key="frame" x="1" y="1" width="475" height="77"/>
-                                                <autoresizingMask key="autoresizingMask"/>
-                                            </stackView>
+                                            <tableCellView identifier="nil" id="qts-D1-0xU">
+                                                <rect key="frame" x="1" y="1" width="475" height="80"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
                                 </tableColumns>
