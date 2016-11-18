@@ -8,22 +8,21 @@
 
 import Cocoa
 
-class SettingStackRow{
+class SettingStackRow: NSStackView{
     
-    let stackRow: NSStackView
-    let checkBox: NSButton
-    let textView: NSTextField
-    var checked: BoolWrapper
+    var checkBox: NSButton = NSButton(checkboxWithTitle: "", target: nil, action: nil)
+    var textView: NSTextField = NSTextField()
+    var checked: BoolWrapper = BoolWrapper(false)
     
     init(checked: BoolWrapper, text: String, fontsize: Int, leftPadding: Int, rowHeight: Int, rowWidth: Int) {
         
-        let checkBox = NSButton(checkboxWithTitle: "", target: nil, action: nil)
-        let textView = NSTextField()
-        let checked = checked
+        super.init(frame: NSRect(x: 0, y: 0, width: rowWidth, height: rowHeight))
         
         checkBox.title = ""
         checkBox.state = checked.value ? 1 : 0
         
+        
+        self.checked = checked
         
         textView.isEditable = false
         textView.font = NSFont.systemFont(ofSize: CGFloat(fontsize))
@@ -34,27 +33,22 @@ class SettingStackRow{
         textView.isBordered = false
         textView.drawsBackground = true
   
-        let stackRow = NSStackView(views: [checkBox, textView])
-        stackRow.orientation = .horizontal
-        checkBox.leftAnchor.constraint(equalTo: stackRow.leftAnchor, constant: CGFloat(leftPadding)).isActive = true
+        setViews([checkBox, textView], in: .leading)
+        self.orientation = .horizontal
+        checkBox.leftAnchor.constraint(equalTo: self.leftAnchor, constant: CGFloat(leftPadding)).isActive = true
         textView.leftAnchor.constraint(equalTo: checkBox.rightAnchor, constant: 10).isActive = true
-        stackRow.heightAnchor.constraint(equalToConstant: CGFloat(rowHeight)).isActive = true
-        stackRow.widthAnchor.constraint(equalToConstant: CGFloat(rowWidth)).isActive = true
+    
+        checkBox.target = self
+        checkBox.action = #selector(onCheckboxChanged(sender:))
         
-        self.checkBox = checkBox
-        self.stackRow = stackRow
-        self.textView = textView
-        self.checked = checked
-        self.checkBox.target = self
-        self.checkBox.action = #selector(onCheckboxChanged(sender:))
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     @IBAction func onCheckboxChanged(sender: NSButton) {
         checked.value = sender.state == 1 ? true : false
-    }
-
-    func get() -> NSStackView{
-        return stackRow
     }
 }
 

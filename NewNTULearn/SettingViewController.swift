@@ -46,19 +46,20 @@ class SettingViewController: NSViewController, NSTableViewDataSource, NSTableVie
         var preView: NSStackView
         var nextView: NSStackView
         let width: Int = Int(view.frame.size.width)
+        var curY: Int = 0
         
-        preView = SettingStackRow(checked: courseInfo.isChecked, text: courseInfo.name, fontsize: 16, leftPadding: 20, rowHeight: bigRowheight, rowWidth: width).get()
-        view.addSubview(preView)
-        preView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        preView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        
-        for i in 0 ..< courseInfo.folders.count{
-            nextView = SettingStackRow(checked: courseInfo.foldersChecked[i], text: courseInfo.folders[i], fontsize: 13, leftPadding: 40, rowHeight: smallRowHeight, rowWidth: width).get()
+        for i in (0...courseInfo.folders.count-1).reversed() {
+            nextView = SettingStackRow(checked: courseInfo.foldersChecked[i], text: courseInfo.folders[i], fontsize: 13, leftPadding: 40, rowHeight: smallRowHeight, rowWidth: width)
             view.addSubview(nextView)
-            nextView.topAnchor.constraint(equalTo: preView.bottomAnchor).isActive = true
-            nextView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+            nextView.setFrameOrigin(NSPoint(x: 0, y: curY))
+            curY += smallRowHeight
             preView = nextView
         }
+        
+        preView = SettingStackRow(checked: courseInfo.isChecked, text: courseInfo.name, fontsize: 16, leftPadding: 20, rowHeight: bigRowheight, rowWidth: width)
+        view.addSubview(preView)
+        preView.setFrameOrigin(NSPoint(x: 0, y: curY))
+        curY += bigRowheight
     
         return view
     }
