@@ -26,8 +26,8 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
    
     init() {
         popover.animates = false
-        
         settingMenu.addItem(NSMenuItem(title: "Preference", action: nil, keyEquivalent: ""))
+        settingMenu.addItem(NSMenuItem(title: "Account", action: nil, keyEquivalent: ""))
         settingMenu.addItem(NSMenuItem(title: "About", action: nil, keyEquivalent: ""))
         settingMenu.addItem(NSMenuItem(title: "Quit", action: nil, keyEquivalent: ""))
         
@@ -42,7 +42,6 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         if eventMonitor == nil {
             eventMonitor = EventMonitor(mask: [.leftMouseDown, .rightMouseDown], handler: { (event) -> Void in
                 if (self.popover.isShown) {
@@ -54,8 +53,6 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
         settingButton.action = #selector(showSettingMenu(sender:))
         goToFolderButton.action = #selector(openNTULearnFolder(sender:))
         infoTextField.stringValue = "initiating... please wait"
-        
-        
     }
     
     override var nibName: String? {

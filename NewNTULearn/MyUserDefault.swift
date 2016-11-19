@@ -107,4 +107,20 @@ class MyUserDefault {
         }
         saveLatestDownloadedFiles(files: files)
     }
+    
+    func getUsername() -> String? {
+        return userDefaults.string(forKey: "username")
+    }
+    
+    func getPassword() -> String? {
+        return userDefaults.string(forKey: "password")
+    }
+    
+    func saveCredential(username: String, password: String) {
+        userDefaults.register(defaults: ["username": username, "password": password])
+    }
+    
+    func sync() {
+        userDefaults.synchronize()
+    }
 }

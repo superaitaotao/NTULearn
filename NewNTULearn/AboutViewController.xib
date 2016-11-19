@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="AboutViewController" customModule="NTULearn" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="300"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ufm-Ey-kQA">
+                    <rect key="frame" x="30" y="-22" width="404" height="221"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                    <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" alignment="center" id="CqB-or-U3r">
+                        <font key="font" metaFont="system" size="15"/>
+                        <mutableString key="title">This APP is hatched by                                                            Daenerys Stormborn of the House Targaryen,               First of Her Name,                                                                the Unburt,                                                                        Queen of the Andals and the First Men,                          Khaleesi of the Great Grass Sea,                                   Breaker of Chains,                                                                  and Mother of Dragons.</mutableString>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ceD-nk-gwE">
+                    <rect key="frame" x="285" y="5" width="177" height="22"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="superaitaotao@gmail.com" id="E1J-oh-Ig7">
+                        <font key="font" metaFont="system" size="14"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Knp-sS-r3j">
+                    <rect key="frame" x="416" y="26" width="43" height="29"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="DT" id="XXZ-or-OpD"/>
+                </imageView>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vjd-t2-rF5">
+                    <rect key="frame" x="117" y="201" width="217" height="99"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="snorlax_icon1024" id="1Yb-KN-wgm"/>
+                </imageView>
+            </subviews>
+            <point key="canvasLocation" x="-59" y="173"/>
+        </customView>
+        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="sU8-h2-o9G">
+            <rect key="frame" x="0.0" y="0.0" width="92" height="340"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" id="ZOm-j6-zgu">
+                <font key="font" metaFont="system"/>
+                <string key="title">This APP is hatched by\n Daenerys Stormborn of the House Targaryen, \nFirst of Her Name, \nthe Unburt, \nQueen of the Andals and the First Men, \nKhaleesi of the Great Grass Sea, \nBreaker of Chains, \nand Mother of Dragons.'</string>
+                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+            </textFieldCell>
+            <point key="canvasLocation" x="63" y="279"/>
+        </textField>
+    </objects>
+    <resources>
+        <image name="DT" width="400" height="400"/>
+        <image name="snorlax_icon1024" width="1024" height="1024"/>
+    </resources>
+</document>

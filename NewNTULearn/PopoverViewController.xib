@@ -73,7 +73,7 @@
                                 <rect key="frame" x="6" y="10" width="284" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Up to date" drawsBackground="YES" id="74X-hW-sjR">
-                                    <font key="font" metaFont="system" size="11"/>
+                                    <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
                                     <allowedInputSourceLocales>
@@ -122,11 +122,11 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView identifier="cell" id="6Ak-SI-U56">
-                                                <rect key="frame" x="1" y="1" width="345" height="75"/>
+                                                <rect key="frame" x="1" y="1" width="349" height="75"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="otW-Tx-T8V">
-                                                        <rect key="frame" x="4" y="59" width="341" height="17"/>
+                                                        <rect key="frame" x="4" y="59" width="345" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" drawsBackground="YES" id="q8v-v6-d71">
                                                             <font key="font" metaFont="cellTitle"/>
@@ -138,7 +138,7 @@
                                                         </connections>
                                                     </textField>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hMC-mv-ft6">
-                                                        <rect key="frame" x="13" y="25" width="319" height="23"/>
+                                                        <rect key="frame" x="13" y="25" width="323" height="23"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="Table View Cell" drawsBackground="YES" id="QIL-F4-YPG">
                                                             <font key="font" metaFont="system" size="14"/>
@@ -150,7 +150,7 @@
                                                         </connections>
                                                     </textField>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NtU-wa-2SS">
-                                                        <rect key="frame" x="203" y="1" width="142" height="17"/>
+                                                        <rect key="frame" x="203" y="1" width="146" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="right" title="Table View Cell" drawsBackground="YES" id="sTk-Xr-teB">
                                                             <dateFormatter key="formatter" dateStyle="short" id="122-SS-Qfa"/>

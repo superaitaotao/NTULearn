@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "52A841A51DD1E9CA0050CE22"
-               BuildableName = "NewNTULearn.app"
-               BlueprintName = "NewNTULearn"
-               ReferencedContainer = "container:NewNTULearn.xcodeproj">
+               BuildableName = "NTULearn.app"
+               BlueprintName = "NTULearn"
+               ReferencedContainer = "container:NTULearn.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "52A841B61DD1E9CB0050CE22"
-               BuildableName = "NewNTULearnTests.xctest"
-               BlueprintName = "NewNTULearnTests"
-               ReferencedContainer = "container:NewNTULearn.xcodeproj">
+               BuildableName = "NTULearnTests.xctest"
+               BlueprintName = "NTULearnTests"
+               ReferencedContainer = "container:NTULearn.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "52A841C11DD1E9CB0050CE22"
-               BuildableName = "NewNTULearnUITests.xctest"
-               BlueprintName = "NewNTULearnUITests"
-               ReferencedContainer = "container:NewNTULearn.xcodeproj">
+               BuildableName = "NTULearnUITests.xctest"
+               BlueprintName = "NTULearnUITests"
+               ReferencedContainer = "container:NTULearn.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -53,9 +53,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "52A841A51DD1E9CA0050CE22"
-            BuildableName = "NewNTULearn.app"
-            BlueprintName = "NewNTULearn"
-            ReferencedContainer = "container:NewNTULearn.xcodeproj">
+            BuildableName = "NTULearn.app"
+            BlueprintName = "NTULearn"
+            ReferencedContainer = "container:NTULearn.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "52A841A51DD1E9CA0050CE22"
-            BuildableName = "NewNTULearn.app"
-            BlueprintName = "NewNTULearn"
-            ReferencedContainer = "container:NewNTULearn.xcodeproj">
+            BuildableName = "NTULearn.app"
+            BlueprintName = "NTULearn"
+            ReferencedContainer = "container:NTULearn.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -95,9 +95,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "52A841A51DD1E9CA0050CE22"
-            BuildableName = "NewNTULearn.app"
-            BlueprintName = "NewNTULearn"
-            ReferencedContainer = "container:NewNTULearn.xcodeproj">
+            BuildableName = "NTULearn.app"
+            BlueprintName = "NTULearn"
+            ReferencedContainer = "container:NTULearn.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -26,6 +26,10 @@
 		526645D51DD3520100F5FFE3 /* SettingViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526645D41DD3520100F5FFE3 /* SettingViewControllerTest.swift */; };
 		52A841BC1DD1E9CB0050CE22 /* NewNTULearnTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A841BB1DD1E9CB0050CE22 /* NewNTULearnTests.swift */; };
 		52A841C71DD1E9CB0050CE22 /* NewNTULearnUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A841C61DD1E9CB0050CE22 /* NewNTULearnUITests.swift */; };
+		52DF9EDD1DDFF02F005D1FBE /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF9EDB1DDFF02F005D1FBE /* AboutViewController.swift */; };
+		52DF9EDE1DDFF02F005D1FBE /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52DF9EDC1DDFF02F005D1FBE /* AboutViewController.xib */; };
+		52E34D3C1DDF558D00BD8096 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E34D3A1DDF558D00BD8096 /* LogInViewController.swift */; };
+		52E34D3D1DDF558D00BD8096 /* LogInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52E34D3B1DDF558D00BD8096 /* LogInViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,13 +67,17 @@
 		524152F81DD6ED8E003ACACE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5241530D1DD7660D003ACACE /* MyUserDefault.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyUserDefault.swift; sourceTree = "<group>"; };
 		526645D41DD3520100F5FFE3 /* SettingViewControllerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewControllerTest.swift; sourceTree = "<group>"; };
-		52A841A61DD1E9CA0050CE22 /* NewNTULearn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewNTULearn.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		52A841B71DD1E9CB0050CE22 /* NewNTULearnTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewNTULearnTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		52A841A61DD1E9CA0050CE22 /* NTULearn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NTULearn.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		52A841B71DD1E9CB0050CE22 /* NTULearnTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NTULearnTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		52A841BB1DD1E9CB0050CE22 /* NewNTULearnTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNTULearnTests.swift; sourceTree = "<group>"; };
 		52A841BD1DD1E9CB0050CE22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		52A841C21DD1E9CB0050CE22 /* NewNTULearnUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewNTULearnUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		52A841C21DD1E9CB0050CE22 /* NTULearnUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NTULearnUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		52A841C61DD1E9CB0050CE22 /* NewNTULearnUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNTULearnUITests.swift; sourceTree = "<group>"; };
 		52A841C81DD1E9CB0050CE22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		52DF9EDB1DDFF02F005D1FBE /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		52DF9EDC1DDFF02F005D1FBE /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
+		52E34D3A1DDF558D00BD8096 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		52E34D3B1DDF558D00BD8096 /* LogInViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LogInViewController.xib; sourceTree = "<group>"; };
 		B247C0D81A48447DE688A3AB /* Pods-NewNTULearn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewNTULearn.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NewNTULearn/Pods-NewNTULearn.debug.xcconfig"; sourceTree = "<group>"; };
 		C26C0E3CC32B02968F1CACDB /* Pods-NewNTULearn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewNTULearn.release.xcconfig"; path = "Pods/Target Support Files/Pods-NewNTULearn/Pods-NewNTULearn.release.xcconfig"; sourceTree = "<group>"; };
 		F76D326CB4476C14FC99BD89 /* Pods_NewNTULearn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NewNTULearn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,9 +143,9 @@
 		52A8419D1DD1E9CA0050CE22 = {
 			isa = PBXGroup;
 			children = (
-				52A841A81DD1E9CA0050CE22 /* NewNTULearn */,
-				52A841BA1DD1E9CB0050CE22 /* NewNTULearnTests */,
-				52A841C51DD1E9CB0050CE22 /* NewNTULearnUITests */,
+				52A841A81DD1E9CA0050CE22 /* NTULearn */,
+				52A841BA1DD1E9CB0050CE22 /* NTULearnTests */,
+				52A841C51DD1E9CB0050CE22 /* NTULearnUITests */,
 				52A841A71DD1E9CA0050CE22 /* Products */,
 				093D1D89ADC6BD829CAA3B73 /* Pods */,
 				89580F2CAE94DD8534AD2832 /* Frameworks */,
@@ -147,14 +155,14 @@
 		52A841A71DD1E9CA0050CE22 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				52A841A61DD1E9CA0050CE22 /* NewNTULearn.app */,
-				52A841B71DD1E9CB0050CE22 /* NewNTULearnTests.xctest */,
-				52A841C21DD1E9CB0050CE22 /* NewNTULearnUITests.xctest */,
+				52A841A61DD1E9CA0050CE22 /* NTULearn.app */,
+				52A841B71DD1E9CB0050CE22 /* NTULearnTests.xctest */,
+				52A841C21DD1E9CB0050CE22 /* NTULearnUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		52A841A81DD1E9CA0050CE22 /* NewNTULearn */ = {
+		52A841A81DD1E9CA0050CE22 /* NTULearn */ = {
 			isa = PBXGroup;
 			children = (
 				524153051DD6EEBF003ACACE /* Model */,
@@ -167,26 +175,33 @@
 				524152E61DD6E668003ACACE /* SettingViewController.swift */,
 				524152E71DD6E668003ACACE /* SettingViewController.xib */,
 				524152E81DD6E668003ACACE /* ViewController.swift */,
+				52E34D3A1DDF558D00BD8096 /* LogInViewController.swift */,
+				52E34D3B1DDF558D00BD8096 /* LogInViewController.xib */,
+				52DF9EDB1DDFF02F005D1FBE /* AboutViewController.swift */,
+				52DF9EDC1DDFF02F005D1FBE /* AboutViewController.xib */,
 			);
+			name = NTULearn;
 			path = NewNTULearn;
 			sourceTree = "<group>";
 		};
-		52A841BA1DD1E9CB0050CE22 /* NewNTULearnTests */ = {
+		52A841BA1DD1E9CB0050CE22 /* NTULearnTests */ = {
 			isa = PBXGroup;
 			children = (
 				52A841BB1DD1E9CB0050CE22 /* NewNTULearnTests.swift */,
 				52A841BD1DD1E9CB0050CE22 /* Info.plist */,
 				526645D41DD3520100F5FFE3 /* SettingViewControllerTest.swift */,
 			);
+			name = NTULearnTests;
 			path = NewNTULearnTests;
 			sourceTree = "<group>";
 		};
-		52A841C51DD1E9CB0050CE22 /* NewNTULearnUITests */ = {
+		52A841C51DD1E9CB0050CE22 /* NTULearnUITests */ = {
 			isa = PBXGroup;
 			children = (
 				52A841C61DD1E9CB0050CE22 /* NewNTULearnUITests.swift */,
 				52A841C81DD1E9CB0050CE22 /* Info.plist */,
 			);
+			name = NTULearnUITests;
 			path = NewNTULearnUITests;
 			sourceTree = "<group>";
 		};
@@ -201,9 +216,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		52A841A51DD1E9CA0050CE22 /* NewNTULearn */ = {
+		52A841A51DD1E9CA0050CE22 /* NTULearn */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 52A841CB1DD1E9CB0050CE22 /* Build configuration list for PBXNativeTarget "NewNTULearn" */;
+			buildConfigurationList = 52A841CB1DD1E9CB0050CE22 /* Build configuration list for PBXNativeTarget "NTULearn" */;
 			buildPhases = (
 				634C3F4CEED1C3ADD9D4C802 /* [CP] Check Pods Manifest.lock */,
 				52A841A21DD1E9CA0050CE22 /* Sources */,
@@ -216,14 +231,14 @@
 			);
 			dependencies = (
 			);
-			name = NewNTULearn;
+			name = NTULearn;
 			productName = NewNTULearn;
-			productReference = 52A841A61DD1E9CA0050CE22 /* NewNTULearn.app */;
+			productReference = 52A841A61DD1E9CA0050CE22 /* NTULearn.app */;
 			productType = "com.apple.product-type.application";
 		};
-		52A841B61DD1E9CB0050CE22 /* NewNTULearnTests */ = {
+		52A841B61DD1E9CB0050CE22 /* NTULearnTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 52A841CE1DD1E9CB0050CE22 /* Build configuration list for PBXNativeTarget "NewNTULearnTests" */;
+			buildConfigurationList = 52A841CE1DD1E9CB0050CE22 /* Build configuration list for PBXNativeTarget "NTULearnTests" */;
 			buildPhases = (
 				52A841B31DD1E9CB0050CE22 /* Sources */,
 				52A841B41DD1E9CB0050CE22 /* Frameworks */,
@@ -234,14 +249,14 @@
 			dependencies = (
 				52A841B91DD1E9CB0050CE22 /* PBXTargetDependency */,
 			);
-			name = NewNTULearnTests;
+			name = NTULearnTests;
 			productName = NewNTULearnTests;
-			productReference = 52A841B71DD1E9CB0050CE22 /* NewNTULearnTests.xctest */;
+			productReference = 52A841B71DD1E9CB0050CE22 /* NTULearnTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		52A841C11DD1E9CB0050CE22 /* NewNTULearnUITests */ = {
+		52A841C11DD1E9CB0050CE22 /* NTULearnUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 52A841D11DD1E9CB0050CE22 /* Build configuration list for PBXNativeTarget "NewNTULearnUITests" */;
+			buildConfigurationList = 52A841D11DD1E9CB0050CE22 /* Build configuration list for PBXNativeTarget "NTULearnUITests" */;
 			buildPhases = (
 				52A841BE1DD1E9CB0050CE22 /* Sources */,
 				52A841BF1DD1E9CB0050CE22 /* Frameworks */,
@@ -252,9 +267,9 @@
 			dependencies = (
 				52A841C41DD1E9CB0050CE22 /* PBXTargetDependency */,
 			);
-			name = NewNTULearnUITests;
+			name = NTULearnUITests;
 			productName = NewNTULearnUITests;
-			productReference = 52A841C21DD1E9CB0050CE22 /* NewNTULearnUITests.xctest */;
+			productReference = 52A841C21DD1E9CB0050CE22 /* NTULearnUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -284,7 +299,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 52A841A11DD1E9CA0050CE22 /* Build configuration list for PBXProject "NewNTULearn" */;
+			buildConfigurationList = 52A841A11DD1E9CA0050CE22 /* Build configuration list for PBXProject "NTULearn" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -297,9 +312,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				52A841A51DD1E9CA0050CE22 /* NewNTULearn */,
-				52A841B61DD1E9CB0050CE22 /* NewNTULearnTests */,
-				52A841C11DD1E9CB0050CE22 /* NewNTULearnUITests */,
+				52A841A51DD1E9CA0050CE22 /* NTULearn */,
+				52A841B61DD1E9CB0050CE22 /* NTULearnTests */,
+				52A841C11DD1E9CB0050CE22 /* NTULearnUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -310,9 +325,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				524152F21DD6E668003ACACE /* PopoverViewController.xib in Resources */,
+				52DF9EDE1DDFF02F005D1FBE /* AboutViewController.xib in Resources */,
 				524152F61DD6E668003ACACE /* SettingViewController.xib in Resources */,
 				524152EF1DD6E668003ACACE /* Main.storyboard in Resources */,
 				524152EE1DD6E668003ACACE /* Info.plist in Resources */,
+				52E34D3D1DDF558D00BD8096 /* LogInViewController.xib in Resources */,
 				524152FE1DD6ED8E003ACACE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -392,10 +409,12 @@
 				524152F71DD6E668003ACACE /* ViewController.swift in Sources */,
 				524152F51DD6E668003ACACE /* SettingViewController.swift in Sources */,
 				5241530E1DD7660D003ACACE /* MyUserDefault.swift in Sources */,
+				52DF9EDD1DDFF02F005D1FBE /* AboutViewController.swift in Sources */,
 				524152EB1DD6E668003ACACE /* CourseInfo.swift in Sources */,
 				524152F11DD6E668003ACACE /* PopoverViewController.swift in Sources */,
 				524152E91DD6E668003ACACE /* AppDelegate.swift in Sources */,
 				524152F41DD6E668003ACACE /* SettingStackRow.swift in Sources */,
+				52E34D3C1DDF558D00BD8096 /* LogInViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,12 +440,12 @@
 /* Begin PBXTargetDependency section */
 		52A841B91DD1E9CB0050CE22 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 52A841A51DD1E9CA0050CE22 /* NewNTULearn */;
+			target = 52A841A51DD1E9CA0050CE22 /* NTULearn */;
 			targetProxy = 52A841B81DD1E9CB0050CE22 /* PBXContainerItemProxy */;
 		};
 		52A841C41DD1E9CB0050CE22 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 52A841A51DD1E9CA0050CE22 /* NewNTULearn */;
+			target = 52A841A51DD1E9CA0050CE22 /* NTULearn */;
 			targetProxy = 52A841C31DD1E9CB0050CE22 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -568,7 +587,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = superaitaotao.NewNTULearnTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NewNTULearn.app/Contents/MacOS/NewNTULearn";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NTULearn.app/Contents/MacOS/NTULearn";
 			};
 			name = Debug;
 		};
@@ -583,7 +602,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = superaitaotao.NewNTULearnTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NewNTULearn.app/Contents/MacOS/NewNTULearn";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NTULearn.app/Contents/MacOS/NTULearn";
 			};
 			name = Release;
 		};
@@ -618,7 +637,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		52A841A11DD1E9CA0050CE22 /* Build configuration list for PBXProject "NewNTULearn" */ = {
+		52A841A11DD1E9CA0050CE22 /* Build configuration list for PBXProject "NTULearn" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				52A841C91DD1E9CB0050CE22 /* Debug */,
@@ -627,7 +646,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		52A841CB1DD1E9CB0050CE22 /* Build configuration list for PBXNativeTarget "NewNTULearn" */ = {
+		52A841CB1DD1E9CB0050CE22 /* Build configuration list for PBXNativeTarget "NTULearn" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				52A841CC1DD1E9CB0050CE22 /* Debug */,
@@ -636,7 +655,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		52A841CE1DD1E9CB0050CE22 /* Build configuration list for PBXNativeTarget "NewNTULearnTests" */ = {
+		52A841CE1DD1E9CB0050CE22 /* Build configuration list for PBXNativeTarget "NTULearnTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				52A841CF1DD1E9CB0050CE22 /* Debug */,
@@ -645,7 +664,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		52A841D11DD1E9CB0050CE22 /* Build configuration list for PBXNativeTarget "NewNTULearnUITests" */ = {
+		52A841D11DD1E9CB0050CE22 /* Build configuration list for PBXNativeTarget "NTULearnUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				52A841D21DD1E9CB0050CE22 /* Debug */,

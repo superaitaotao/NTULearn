@@ -13,8 +13,11 @@ class SettingStackRow: NSStackView{
     var checkBox: NSButton = NSButton(checkboxWithTitle: "", target: nil, action: nil)
     var textView: NSTextField = NSTextField()
     var checked: BoolWrapper = BoolWrapper(false)
+    weak var dad: SettingStackRow?
+    var sons: [SettingStackRow] = []
+    var isDad = false
     
-    init(checked: BoolWrapper, text: String, fontsize: Int, leftPadding: Int, rowHeight: Int, rowWidth: Int) {
+    init(checked: BoolWrapper, text: String, fontsize: Int, leftPadding: Int, rowHeight: Int, rowWidth: Int, isDad: Bool) {
         
         super.init(frame: NSRect(x: 0, y: 0, width: rowWidth, height: rowHeight))
         
@@ -41,6 +44,8 @@ class SettingStackRow: NSStackView{
         checkBox.target = self
         checkBox.action = #selector(onCheckboxChanged(sender:))
         
+        self.isDad = isDad
+        
     }
     
     required init?(coder: NSCoder) {
@@ -49,6 +54,27 @@ class SettingStackRow: NSStackView{
     
     @IBAction func onCheckboxChanged(sender: NSButton) {
         checked.value = sender.state == 1 ? true : false
+        if isDad {
+            if !(checked.value) {
+                for son in sons {
+                    son.checked.value = false
+                    son.checkBox.state = 0
+                }
+            }
+        } else {
+            if checked.value {
+                dad?.checked.value = true
+                dad?.checkBox.state = 1
+            }
+        }
+    }
+    
+    func addDad(row: SettingStackRow) {
+        dad = row
+    }
+    
+    func addSon(row: SettingStackRow) {
+        sons.append(row)
     }
 }
 

@@ -43,22 +43,24 @@ class SettingViewController: NSViewController, NSTableViewDataSource, NSTableVie
             sub.removeFromSuperview()
         }
         
-        var preView: NSStackView
-        var nextView: NSStackView
+        var dadView: SettingStackRow
+        var sonView: SettingStackRow
         let width: Int = Int(view.frame.size.width)
         var curY: Int = 0
         
+        dadView = SettingStackRow(checked: courseInfo.isChecked, text: courseInfo.name, fontsize: 16, leftPadding: 20, rowHeight: bigRowheight, rowWidth: width, isDad: true)
+        
         for i in (0...courseInfo.folders.count-1).reversed() {
-            nextView = SettingStackRow(checked: courseInfo.foldersChecked[i], text: courseInfo.folders[i], fontsize: 13, leftPadding: 40, rowHeight: smallRowHeight, rowWidth: width)
-            view.addSubview(nextView)
-            nextView.setFrameOrigin(NSPoint(x: 0, y: curY))
+            sonView = SettingStackRow(checked: courseInfo.foldersChecked[i], text: courseInfo.folders[i], fontsize: 13, leftPadding: 40, rowHeight: smallRowHeight, rowWidth: width, isDad: false)
+            view.addSubview(sonView)
+            sonView.setFrameOrigin(NSPoint(x: 0, y: curY))
+            dadView.addSon(row: sonView)
+            sonView.addDad(row: dadView)
             curY += smallRowHeight
-            preView = nextView
         }
         
-        preView = SettingStackRow(checked: courseInfo.isChecked, text: courseInfo.name, fontsize: 16, leftPadding: 20, rowHeight: bigRowheight, rowWidth: width)
-        view.addSubview(preView)
-        preView.setFrameOrigin(NSPoint(x: 0, y: curY))
+        view.addSubview(dadView)
+        dadView.setFrameOrigin(NSPoint(x: 0, y: curY))
         curY += bigRowheight
     
         return view

@@ -19,9 +19,9 @@ let userAgents = ["Mozilla/5.0 (Windows NT 6.1; WOW64; rv:41.0) Gecko/20100101 F
               "Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko]"]
 
 enum FetchResult {
-    case logInError(Error)
-    case courseListRetrievalError(Error)
-    case fileDownloadError(Error)
+    case logInError(Error?)
+    case courseListRetrievalError(Error?)
+    case fileDownloadError(Error?)
     case success(Data)
 }
 
@@ -29,9 +29,9 @@ class NTULearnFetcher{
     static let DownloadFinishedKey = "DownloadFinishedKey"
     
     let baseUrl = "https://ntulearn.ntu.edu.sg"
-    let baseFileUrl = "/Users/shutaoxu/NTULearn"
-    let userName = "sxu007"
-    let password = "Galaxy1234#"
+    let baseFileUrl = NSHomeDirectory() + "/NTULearn"
+    var username: String?
+    var password: String?
     let session: URLSession = URLSession.shared
     let logInQueue : OperationQueue = {
         let queue = OperationQueue()
@@ -73,23 +73,33 @@ class NTULearnFetcher{
     func logIn(handler: @escaping (FetchResult) -> Void){
         logInQueue.cancelAllOperations()
         print("logging in ...")
+        
+        if username == nil || password == nil {
+            username = MyUserDefault.sharedInstance.getUsername()
+            password = MyUserDefault.sharedInstance.getPassword()
+        }
+        
         var logInRequest = URLRequest(url: URL(string: baseUrl + "/webapps/login/")!);
-        let postString = "user_id=\(userName)&password=\(password)"
+        let postString = "user_id=\(username!)&password=\(password!)"
+        
         logInRequest.httpMethod = "POST"
         logInRequest.httpBody  = postString.data(using: String.Encoding.utf8)
         logInRequest.allHTTPHeaderFields = ["User-Agent" : userAgents[Int(arc4random_uniform(UInt32(userAgents.count)))]]
         session.dataTask(with: logInRequest, completionHandler: { (data, response, error) -> Void in
             if (data == nil) {
-                handler(FetchResult.logInError(error!))
+                handler(FetchResult.logInError(error))
             } else {
                 let dataString = String(data: data!, encoding: String.Encoding.utf8)!
                 if(dataString.contains("Course List")) {
                     handler(FetchResult.success(data!))
                 } else {
-                    handler(FetchResult.logInError(error!))
+                    handler(FetchResult.logInError(error))
                 }
             }
         }).resume()
+        
+        username = nil
+        password = nil
     }
     
     func getCourseList(handler: @escaping (FetchResult) -> Void) {
@@ -104,7 +114,7 @@ class NTULearnFetcher{
                 courseListRuquest.httpBody = postParams.data(using: String.Encoding.utf8)
                 self.session.dataTask(with: courseListRuquest, completionHandler: {(data, response, error) -> Void in
                     if (data == nil) {
-                        handler(FetchResult.courseListRetrievalError(error!))
+                        handler(FetchResult.courseListRetrievalError(error))
                     } else {
                         self.courseListCompleteHandler = {() -> Void in handler(FetchResult.success(data!))}
                         self.parseCourseList(data: data!)
@@ -250,6 +260,7 @@ class NTULearnFetcher{
     }
     
     func setDownloadMonitor() {
+        helperQueue.cancelAllOperations()
         helperQueue.addOperation {
             while true {
                 let num1 = self.noOfDownloadedFiles
