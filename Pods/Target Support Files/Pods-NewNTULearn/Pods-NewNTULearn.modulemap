@@ -1,0 +1,6 @@
+framework module Pods_NewNTULearn {
+  umbrella header "Pods-NewNTULearn-umbrella.h"
+
+  export *
+  module * { export * }
+}
