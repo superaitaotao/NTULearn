@@ -204,7 +204,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func onDownloadFinished(_ : Notification) {
         let num: Int = (fetcher?.noOfDownloadedFiles)!
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm dd/MM"
+        dateFormatter.dateFormat = "HH:mm dd MMM"
         MyUserDefault.sharedInstance.saveLatestDownloadedFiles(files: popoverViewController.recentFiles)
         popoverViewController.infoTextField.stringValue = "\(num) files downloaded @ \(dateFormatter.string(from: Date()))"
         MyUserDefault.sharedInstance.sync()
