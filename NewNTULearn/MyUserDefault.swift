@@ -6,6 +6,7 @@
 //  Copyright © 2016 shutao xu. All rights reserved.
 //
 
+
 import Cocoa
 
 class MyUserDefault {

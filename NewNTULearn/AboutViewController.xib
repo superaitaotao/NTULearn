@@ -22,7 +22,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                     <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" alignment="center" id="CqB-or-U3r">
                         <font key="font" metaFont="system" size="15"/>
-                        <mutableString key="title">This APP is hatched by                                                            Daenerys Stormborn of the House Targaryen,               First of Her Name,                                                                the Unburt,                                                                        Queen of the Andals and the First Men,                          Khaleesi of the Great Grass Sea,                                   Breaker of Chains,                                                                  and Mother of Dragons.</mutableString>
+                        <string key="title">This APP is hatched by                                                            Daenerys Stormborn of the House Targaryen,               First of Her Name,                                                                the Unburt,                                                                        Queen of the Andals and the First Men,                          Khaleesi of the Great Grass Sea,                                   Breaker of Chains,                                                                  and Mother of Dragons.</string>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -42,7 +42,7 @@
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="DT" id="XXZ-or-OpD"/>
                 </imageView>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vjd-t2-rF5">
-                    <rect key="frame" x="117" y="201" width="217" height="99"/>
+                    <rect key="frame" x="133" y="207" width="186" height="76"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="snorlax_icon1024" id="1Yb-KN-wgm"/>
                 </imageView>
