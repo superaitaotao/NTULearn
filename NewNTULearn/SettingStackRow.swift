@@ -60,6 +60,11 @@ class SettingStackRow: NSStackView{
                     son.checked.value = false
                     son.checkBox.state = 0
                 }
+            } else {
+                for son in sons {
+                    son.checked.value = true
+                    son.checkBox.state = 1
+                }
             }
         } else {
             if checked.value {

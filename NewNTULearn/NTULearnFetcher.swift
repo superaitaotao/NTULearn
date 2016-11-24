@@ -56,6 +56,7 @@ class NTULearnFetcher{
     }()
     
     var courseFolders: [CourseInfo] = []
+    var downloadedFileUrls = Set<String>()
     var noOfDownloadedFiles: Int = 0
     
     let excludedCourses = NSSet(array: ["Home Page", "Announcements", "Tools", "Help", "Library Resources", "Information", "Groups"])
@@ -279,8 +280,14 @@ class NTULearnFetcher{
     }
     
     private func downloadFile(url: String, path: String, courseName: String) {
+        if downloadedFileUrls.contains(url) {
+            return
+        } else {
+            downloadedFileUrls.insert(url)
+        }
         downloadFileQueue.addOperation({() -> Void in
             self.session.downloadTask(with: URL(string: url)!, completionHandler: { (url, response, error) -> Void in
+                print("in download task")
                 if error != nil {
                     print (error.debugDescription)
                     return

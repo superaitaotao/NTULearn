@@ -45,7 +45,7 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
         if eventMonitor == nil {
             eventMonitor = EventMonitor(mask: [.leftMouseDown, .rightMouseDown], handler: { (event) -> Void in
                 if (self.popover.isShown) {
-                    self.popover.close()
+                    self.closePopover(button: nil)
                 }
             })
         }
@@ -63,23 +63,21 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
         settingMenu.popUp(positioning: settingMenu.item(at:0) , at: NSPoint(x: 0, y: settingButton.frame.size.height + 7), in: settingButton)
     }
     
-    func showPopover(button: AnyObject?) {
+    private func showPopover(button: AnyObject?) {
+        popover.show(relativeTo: (button?.bounds)!, of: button as! NSButton, preferredEdge: NSRectEdge.minY)
+        eventMonitor?.start()
+    }
+    
+    private func closePopover(button: AnyObject?) {
+        popover.performClose(button)
+        eventMonitor?.stop()
+    }
+
+    func togglePopover(button: AnyObject?) {
         if popover.contentViewController == nil {
             popover.contentViewController = self
         }
         
-        popover.show(relativeTo: (button?.bounds)!, of: button as! NSButton, preferredEdge: NSRectEdge.minY)
-        eventMonitor?.start()
-        print("show popover")
-    }
-    
-    func closePopover(button: AnyObject?) {
-        popover.performClose(button)
-        eventMonitor?.stop()
-        print("close popover")
-    }
-
-    func togglePopover(button: AnyObject?) {
         if (popover.isShown) {
             closePopover(button: button)
         } else {

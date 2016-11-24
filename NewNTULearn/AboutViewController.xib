@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
+        <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,6 +18,16 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="300"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
+                <box fixedFrame="YES" boxType="custom" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="0Zj-4H-35F">
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="300"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <view key="contentView" ambiguous="YES" id="3oR-yi-dgH">
+                        <rect key="frame" x="1" y="1" width="478" height="298"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </view>
+                    <color key="borderColor" red="0.59938134517766495" green="0.59938134517766495" blue="0.59938134517766495" alpha="0.41999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="fillColor" red="0.96256695047899687" green="1" blue="0.97270105184659883" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </box>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ufm-Ey-kQA">
                     <rect key="frame" x="30" y="-22" width="404" height="221"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>

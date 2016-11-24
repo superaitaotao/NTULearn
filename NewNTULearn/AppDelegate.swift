@@ -44,8 +44,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         //call view to load popover view
         let _ = popoverViewController.view
       
-        if let username = MyUserDefault.sharedInstance.getUsername(),
-            let password = MyUserDefault.sharedInstance.getPassword() {
+        if let _ = MyUserDefault.sharedInstance.getUsername(),
+            let _ = MyUserDefault.sharedInstance.getPassword() {
             if !MyUserDefault.sharedInstance.isSavedCourseFoldersPresent() {
                 downloadCourseList()
             } else {
@@ -55,7 +55,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                         switch result {
                         case FetchResult.logInError:
                             print("log in failed")
-                        case FetchResult.success(let data):
+                        case FetchResult.success(let _):
                             print("logged in")
                             self.scheduleTimer()
                             self.popoverViewController.infoTextField.stringValue = "downloading your files, please wait ..."
@@ -94,7 +94,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func quitApplication() {
-        popoverViewController.closePopover(button: statusIcon.button)
+        popoverViewController.togglePopover(button: statusIcon.button)
         let alert = NSAlert()
         alert.messageText = "Warning"
         alert.informativeText = "Wanna quit NTULearn Downloader?"
@@ -121,11 +121,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             aboutWindow?.maxSize = (aboutWindow?.frame.size)!
         }
         aboutWindow?.makeKeyAndOrderFront(nil)
-        popoverViewController.closePopover(button: statusIcon.button)
+        popoverViewController.togglePopover(button: statusIcon.button)
     }
     
     func showLogInWindow() {
-        popoverViewController.closePopover(button: statusIcon.button)
+        popoverViewController.togglePopover(button: statusIcon.button)
         logInWindow = logInViewController.view.window
         if logInWindow == nil {
             logInWindow = NSWindow(contentViewController: logInViewController)
@@ -195,7 +195,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             settingWindow?.title = "NTULearn Setting"
         }
         
-        popoverViewController.closePopover(button: nil)
+        popoverViewController.togglePopover(button: nil)
         settingWindow?.orderFrontRegardless()
         
         settingViewController.refreshButton.action = #selector(refreshCourseList(_:))
@@ -234,7 +234,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         fetcher?.download()
         popoverViewController.infoTextField.stringValue = "Downloading your files, please wait ..."
         if isFirstTime {
-            popoverViewController.showPopover(button: statusIcon.button)
+            popoverViewController.togglePopover(button: statusIcon.button)
             isFirstTime = false
         }
  
@@ -246,6 +246,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 switch result {
                 case FetchResult.logInError:
                     print("log in failed")
+                    self.popoverViewController.infoTextField.stringValue = "Log in failed, pls check your account info again"
                 case FetchResult.courseListRetrievalError:
                     print("course list retrieval error")
                 case FetchResult.success(let data):

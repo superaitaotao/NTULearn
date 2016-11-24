@@ -18,6 +18,7 @@ class MyUserDefault {
     let latestDownloadedKey = "latestDownloadedFiles"
     
     func saveCourseFolders(courseFolders : [CourseInfo]) {
+        print("course folders saved")
         var allCourseInfo: [[String: Any]] = []
         var oneCourseInfo: [String: Any]
         var oneCourseFolders: [[Any]]
@@ -36,8 +37,8 @@ class MyUserDefault {
             oneCourseInfo["folders"] = oneCourseFolders
             allCourseInfo.append(oneCourseInfo)
         }
-        
-        userDefaults.register(defaults:[courseFoldersKey : allCourseInfo])
+       
+        userDefaults.set(allCourseInfo, forKey: courseFoldersKey)
     }
     
     func getCourseFolders() -> [CourseInfo]{
@@ -91,13 +92,14 @@ class MyUserDefault {
     }
     
     func saveLatestDownloadedFiles(files: [FileInfo]) {
+        print("save latest downloaded files")
         var filesDefault: [[AnyObject]] = []
         
         for file in files {
             filesDefault.append([file.fileName as AnyObject, file.courseName as AnyObject, file.syncDate as AnyObject, file.fileUrl?.absoluteString as AnyObject])
         }
-        
-        userDefaults.register(defaults: [latestDownloadedKey: filesDefault])
+       
+        userDefaults.set(filesDefault, forKey: latestDownloadedKey)
     }
     
     func addLatestDownloadedFile(file: FileInfo) {
@@ -118,7 +120,9 @@ class MyUserDefault {
     }
     
     func saveCredential(username: String, password: String) {
-        userDefaults.register(defaults: ["username": username, "password": password])
+        print("saved credentials")
+        userDefaults.set(username, forKey: "username")
+        userDefaults.set(password, forKey: "password")
     }
     
     func sync() {
