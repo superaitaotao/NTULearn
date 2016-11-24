@@ -22,7 +22,9 @@ class SettingViewController: NSViewController, NSTableViewDataSource, NSTableVie
     override func viewDidLoad() {
         if UserDefaults.standard.array(forKey: "courseFoldersSetting") == nil {
             print("default nil")
-//            setUpSettingTable()
+        } else {
+            courseFolders = userDefault.getCourseFolders()
+            tableView.reloadData()
         }
     }
     

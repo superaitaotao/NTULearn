@@ -47,14 +47,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if let _ = MyUserDefault.sharedInstance.getUsername(),
             let _ = MyUserDefault.sharedInstance.getPassword() {
             if !MyUserDefault.sharedInstance.isSavedCourseFoldersPresent() {
-                downloadCourseList()
+                downloadCourseList(refresh: true)
             } else {
+                self.popoverViewController.togglePopover(button: statusIcon.button)
                 self.isInitiated = true
                 let operation = BlockOperation(block: {() -> Void in
                     self.fetcher?.logIn(handler: { result in
                         switch result {
                         case FetchResult.logInError:
                             print("log in failed")
+                            self.popoverViewController.infoTextField.stringValue = "log in failed, please check your account info"
                         case FetchResult.success(let _):
                             print("logged in")
                             self.scheduleTimer()
@@ -163,7 +165,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     print("logged in")
                     self.logInViewController.infoTextField.stringValue = "Log In Successfully! Initiating NTULearn Downloader..."
                     MyUserDefault.sharedInstance.saveCredential(username: username, password: password)
-                    self.downloadCourseList()
+                    self.downloadCourseList(refresh: false)
                 default:
                     break
                 }
@@ -195,7 +197,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             settingWindow?.title = "NTULearn Setting"
         }
         
-        popoverViewController.togglePopover(button: nil)
+        popoverViewController.togglePopover(button: statusIcon.button)
         settingWindow?.orderFrontRegardless()
         
         settingViewController.refreshButton.action = #selector(refreshCourseList(_:))
@@ -224,7 +226,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             break
         case NSAlertSecondButtonReturn:
             popoverViewController.infoTextField.stringValue = "Reloading your course list, please wait ..."
-            downloadCourseList()
+            MyUserDefault.sharedInstance.refresh()
+            downloadCourseList(refresh: true)
         default:
             break
         }
@@ -240,32 +243,38 @@ class AppDelegate: NSObject, NSApplicationDelegate {
  
     }
     
-    func downloadCourseList() {
-        let operation = BlockOperation(block: { () -> Void in
-            self.fetcher?.getCourseList(handler: { result in
-                switch result {
-                case FetchResult.logInError:
-                    print("log in failed")
-                    self.popoverViewController.infoTextField.stringValue = "Log in failed, pls check your account info again"
-                case FetchResult.courseListRetrievalError:
-                    print("course list retrieval error")
-                case FetchResult.success(let data):
-                    print("course list get")
-                    self.isInitiated = true
-                    OperationQueue.main.addOperation {
-                        self.showPreferencePage(sender: nil)
-                        self.settingViewController.infoTextField.stringValue = ""
-                        self.settingViewController.courseFolders = MyUserDefault.sharedInstance.getCourseFolders()
-                        self.settingViewController.tableView.reloadData()
-                        self.logInWindow?.close()
+    func downloadCourseList(refresh: Bool) {
+        logInWindow?.close()
+        popoverViewController.togglePopover(button: statusIcon.button)
+        
+        if !refresh && MyUserDefault.sharedInstance.getCourseFolders().count > 0 {
+            showPreferencePage(sender: nil)
+        } else {
+            let operation = BlockOperation(block: { () -> Void in
+                self.fetcher?.getCourseList(handler: { result in
+                    switch result {
+                    case FetchResult.logInError:
+                        print("log in failed")
+                        self.popoverViewController.infoTextField.stringValue = "Log in failed, pls check your account info again"
+                    case FetchResult.courseListRetrievalError:
+                        print("course list retrieval error")
+                    case FetchResult.success(_):
+                        print("course list get")
+                        self.isInitiated = true
+                        OperationQueue.main.addOperation {
+                            self.showPreferencePage(sender: nil)
+                            self.settingViewController.infoTextField.stringValue = ""
+                            self.settingViewController.courseFolders = MyUserDefault.sharedInstance.getCourseFolders()
+                            self.settingViewController.tableView.reloadData()
+                        }
+                    default:
+                        print("error")
+                        break
                     }
-                default:
-                    print("error")
-                    break
-                }
+                })
             })
-        })
-        fetcher?.logInQueue.addOperation(operation)
+            fetcher?.logInQueue.addOperation(operation)
+        }
     }
 }
 

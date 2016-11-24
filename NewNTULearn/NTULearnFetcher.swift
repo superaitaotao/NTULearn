@@ -56,7 +56,7 @@ class NTULearnFetcher{
     }()
     
     var courseFolders: [CourseInfo] = []
-    var downloadedFileUrls = Set<String>()
+    static var downloadedFileUrls = MyUserDefault.sharedInstance.getDownloadedFileUrls()
     var noOfDownloadedFiles: Int = 0
     
     let excludedCourses = NSSet(array: ["Home Page", "Announcements", "Tools", "Help", "Library Resources", "Information", "Groups"])
@@ -273,6 +273,7 @@ class NTULearnFetcher{
                 } else {
                     print("download finished")
                     NotificationCenter.default.post(name: Notification.Name(NTULearnFetcher.DownloadFinishedKey), object: nil)
+                    MyUserDefault.sharedInstance.saveDownloadedFileUrls(fileUrls: NTULearnFetcher.downloadedFileUrls)
                     break
                 }
             }
@@ -280,10 +281,10 @@ class NTULearnFetcher{
     }
     
     private func downloadFile(url: String, path: String, courseName: String) {
-        if downloadedFileUrls.contains(url) {
+        if NTULearnFetcher.downloadedFileUrls.contains(url) {
             return
         } else {
-            downloadedFileUrls.insert(url)
+            NTULearnFetcher.downloadedFileUrls.insert(url)
         }
         downloadFileQueue.addOperation({() -> Void in
             self.session.downloadTask(with: URL(string: url)!, completionHandler: { (url, response, error) -> Void in

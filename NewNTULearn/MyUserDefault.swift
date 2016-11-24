@@ -16,6 +16,7 @@ class MyUserDefault {
     
     let courseFoldersKey = "courseFoldersSetting"
     let latestDownloadedKey = "latestDownloadedFiles"
+    let donwloadedFileUrlsKey = "downloadedFileUrls"
     
     func saveCourseFolders(courseFolders : [CourseInfo]) {
         print("course folders saved")
@@ -125,7 +126,32 @@ class MyUserDefault {
         userDefaults.set(password, forKey: "password")
     }
     
+    func saveDownloadedFileUrls(fileUrls: Set<String>) {
+        var urls: [String] = []
+        for url in fileUrls {
+            urls.append(url)
+        }
+        userDefaults.set(urls, forKey: donwloadedFileUrlsKey)
+    }
+    
+    func getDownloadedFileUrls() -> Set<String>{
+        let urls = userDefaults.array(forKey: donwloadedFileUrlsKey)
+        var set: Set<String> = Set()
+        if urls != nil {
+            for url in urls! {
+                set.insert(url as! String)
+            }
+        }
+        return set
+    }
+    
     func sync() {
         userDefaults.synchronize()
+    }
+    
+    func refresh() {
+        userDefaults.removeObject(forKey: donwloadedFileUrlsKey)
+        //bad approach...
+        NTULearnFetcher.downloadedFileUrls = []
     }
 }
