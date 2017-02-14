@@ -25,6 +25,7 @@ enum FetchResult {
     case success(Data)
 }
 
+// Class in charge of downloading files
 class NTULearnFetcher{
     static let DownloadFinishedKey = "DownloadFinishedKey"
     
@@ -33,6 +34,7 @@ class NTULearnFetcher{
     var username: String?
     var password: String?
     let session: URLSession?
+
     let logInQueue : OperationQueue = {
         let queue = OperationQueue()
         print("establishing log in queue")
@@ -74,6 +76,8 @@ class NTULearnFetcher{
         session = URLSession(configuration: configuration)
     }
     
+
+    // Log in by sending Http POST request with username and password
     func logIn(handler: @escaping (FetchResult) -> Void){
         logInQueue.cancelAllOperations()
         print("logging in ...")
@@ -106,6 +110,7 @@ class NTULearnFetcher{
         password = nil
     }
     
+    // Get course list by sending POST request
     func getCourseList(handler: @escaping (FetchResult) -> Void) {
         courseFolders = []
         logIn(handler: { (fetchResult) -> Void in
@@ -141,6 +146,7 @@ class NTULearnFetcher{
 //        <span class='name'>. Wong Mun Yee Lora;&nbsp;&nbsp;</span></div>
 //    </li>
     
+    // Parse the course list obtained 
     private func parseCourseList(data: Data) {
         let doc = getHtmlDoc(data: data)
         var courses : [[String]] = []
@@ -160,6 +166,7 @@ class NTULearnFetcher{
 //        </li>
 //    </ul>
     
+    // parse the course folders in each course 
     private func parseCourseFolders(courses: [[String]]) {
         numberOfCourses = courses.count
         for course in  courses{
@@ -167,6 +174,7 @@ class NTULearnFetcher{
         }
     }
     
+
     func addCourseToQueue(course: [String]) {
         let getFolderListRequest = URLRequest(url: URL(string: baseUrl + course[0])!)
         logInQueue.addOperation({ () -> Void in
@@ -208,6 +216,7 @@ class NTULearnFetcher{
     }
 
     
+    // Save downloaded file
     func writeToFile(s: String) {
         let s = s
         if var dir = FileManager.default.urls(for: FileManager.SearchPathDirectory.documentDirectory, in: FileManager.SearchPathDomainMask.userDomainMask).first{
@@ -227,6 +236,7 @@ class NTULearnFetcher{
         return nil
     }
     
+    // Download files
     func download(handler: @escaping (FetchResult) -> Void) {
         let goDownload = {
             self.downloadFileQueue.cancelAllOperations()
@@ -335,6 +345,7 @@ class NTULearnFetcher{
         lock.unlock()
     }
     
+    // Recursively look for file/folder links in a page
     private func downloadRec(url: String, path: String, courseName: String) {
         let urlRequest = URLRequest(url: URL(string:url)!)
         logInQueue.addOperation {
