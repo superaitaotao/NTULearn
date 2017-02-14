@@ -32,7 +32,7 @@ class NTULearnFetcher{
     let baseFileUrl = NSHomeDirectory() + "/NTULearn"
     var username: String?
     var password: String?
-    let session: URLSession = URLSession.shared
+    let session: URLSession?
     let logInQueue : OperationQueue = {
         let queue = OperationQueue()
         print("establishing log in queue")
@@ -69,6 +69,9 @@ class NTULearnFetcher{
     
     init(popover: PopoverViewController) {
         self.popover = popover
+        let configuration = URLSessionConfiguration.default
+        configuration.timeoutIntervalForRequest = 5
+        session = URLSession(configuration: configuration)
     }
     
     func logIn(handler: @escaping (FetchResult) -> Void){
@@ -86,7 +89,7 @@ class NTULearnFetcher{
         logInRequest.httpMethod = "POST"
         logInRequest.httpBody  = postString.data(using: String.Encoding.utf8)
         logInRequest.allHTTPHeaderFields = ["User-Agent" : userAgents[Int(arc4random_uniform(UInt32(userAgents.count)))]]
-        session.dataTask(with: logInRequest, completionHandler: { (data, response, error) -> Void in
+        session?.dataTask(with: logInRequest, completionHandler: { (data, response, error) -> Void in
             if (data == nil) {
                 handler(FetchResult.logInError(error))
             } else {
@@ -105,7 +108,7 @@ class NTULearnFetcher{
     
     func getCourseList(handler: @escaping (FetchResult) -> Void) {
         courseFolders = []
-        logIn( handler: { (fetchResult) -> Void in
+        logIn(handler: { (fetchResult) -> Void in
             switch fetchResult{
                 
             case .success:
@@ -113,7 +116,7 @@ class NTULearnFetcher{
                 let postParams = "action=refreshAjaxModule&modId=_22_1&tabId=_31525_1&tab_tab_group_id=_13_1"
                 courseListRuquest.httpMethod = "POST"
                 courseListRuquest.httpBody = postParams.data(using: String.Encoding.utf8)
-                self.session.dataTask(with: courseListRuquest, completionHandler: {(data, response, error) -> Void in
+                self.session?.dataTask(with: courseListRuquest, completionHandler: {(data, response, error) -> Void in
                     if (data == nil) {
                         handler(FetchResult.courseListRetrievalError(error))
                     } else {
@@ -167,7 +170,7 @@ class NTULearnFetcher{
     func addCourseToQueue(course: [String]) {
         let getFolderListRequest = URLRequest(url: URL(string: baseUrl + course[0])!)
         logInQueue.addOperation({ () -> Void in
-            self.session.dataTask(with: getFolderListRequest, completionHandler: { (data, response, error) -> Void in
+            self.session?.dataTask(with: getFolderListRequest, completionHandler: { (data, response, error) -> Void in
                 if data == nil {
                     print("\(getFolderListRequest.url) failed to load")
                 } else {
@@ -224,7 +227,7 @@ class NTULearnFetcher{
         return nil
     }
     
-    func download() {
+    func download(handler: @escaping (FetchResult) -> Void) {
         let goDownload = {
             self.downloadFileQueue.cancelAllOperations()
             self.noOfDownloadedFiles = 0
@@ -254,6 +257,8 @@ class NTULearnFetcher{
             switch fetchResult{
             case .success:
                 goDownload()
+            case .logInError(let error):
+                handler(fetchResult)
             default:
                 break
             }
@@ -287,7 +292,7 @@ class NTULearnFetcher{
             NTULearnFetcher.downloadedFileUrls.insert(url)
         }
         downloadFileQueue.addOperation({() -> Void in
-            self.session.downloadTask(with: URL(string: url)!, completionHandler: { (url, response, error) -> Void in
+            self.session?.downloadTask(with: URL(string: url)!, completionHandler: { (url, response, error) -> Void in
                 print("in download task")
                 if error != nil {
                     print (error.debugDescription)
@@ -333,7 +338,7 @@ class NTULearnFetcher{
     private func downloadRec(url: String, path: String, courseName: String) {
         let urlRequest = URLRequest(url: URL(string:url)!)
         logInQueue.addOperation {
-            self.session.dataTask(with: urlRequest, completionHandler: {(data, response, error) -> Void in
+            self.session?.dataTask(with: urlRequest, completionHandler: {(data, response, error) -> Void in
                 if let data = data,
                     let html = self.getHtmlDoc(data: data){
                     //attachments first

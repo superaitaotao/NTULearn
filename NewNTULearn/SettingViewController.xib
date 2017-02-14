@@ -50,7 +50,7 @@
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V0f-hK-pB2">
                                 <rect key="frame" x="5" y="6" width="366" height="19"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Auto download happens every 12 hours" id="eyW-D0-iA1">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Auto download happens every 4 hours" id="eyW-D0-iA1">
                                     <font key="font" metaFont="systemSemibold" size="12"/>
                                     <color key="textColor" red="0.40700348980000001" green="0.40700348980000001" blue="0.40700348980000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="backgroundColor" red="0.96900777284263961" green="0.96900777284263961" blue="0.96900777284263961" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -97,7 +97,8 @@ class MyUserDefault {
         var filesDefault: [[AnyObject]] = []
         
         for file in files {
-            filesDefault.append([file.fileName as AnyObject, file.courseName as AnyObject, file.syncDate as AnyObject, file.fileUrl?.absoluteString as AnyObject])
+            let fileUrl = file.fileUrl?.path
+            filesDefault.append([file.fileName as AnyObject, file.courseName as AnyObject, file.syncDate as AnyObject, fileUrl as AnyObject])
         }
        
         userDefaults.set(filesDefault, forKey: latestDownloadedKey)
